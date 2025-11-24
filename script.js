@@ -1,10 +1,27 @@
+// Performance optimization - debounce
+const debounce = (fn, delay) => {
+    let timeoutId;
+    return (...args) => {
+        clearTimeout(timeoutId);
+        timeoutId = setTimeout(() => fn(...args), delay);
+    };
+};
+
 // Mobile menu toggle
 const menuToggle = document.getElementById('menuToggle');
 const navLinks = document.getElementById('navLinks');
 
 if (menuToggle) {
-    menuToggle.addEventListener('click', () => {
+    menuToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
         navLinks.classList.toggle('active');
+        menuToggle.style.animation = 'pulse 0.3s ease';
+    });
+
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.navbar')) {
+            navLinks.classList.remove('active');
+        }
     });
 }
 
@@ -153,28 +170,55 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Set active nav link based on scroll position
-window.addEventListener('scroll', () => {
-    const sections = document.querySelectorAll('section[id], div[id="home"]');
+// Optimize scroll performance with throttle
+let lastScrollTime = 0;
+const handleScroll = debounce(() => {
+    const now = Date.now();
+    if (now - lastScrollTime < 100) return;
+    lastScrollTime = now;
+
+    const sections = document.querySelectorAll('section[id]');
     let current = '';
 
     sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        if (pageYOffset >= sectionTop - 200) {
+        const rect = section.getBoundingClientRect();
+        if (rect.top <= 300) {
             current = section.getAttribute('id');
         }
     });
 
     document.querySelectorAll('.nav-links a').forEach(link => {
         link.classList.remove('active');
-        if (link.getAttribute('href') === '#' + current ||
-            (current === '' && link.getAttribute('href').includes('#home'))) {
+        const href = link.getAttribute('href');
+        if (href === '#' + current || (current === '' && href.includes('#home'))) {
             link.classList.add('active');
         }
     });
-});
+}, 50);
 
-// Lazy load images
-document.querySelectorAll('img').forEach(img => {
-    img.loading = 'lazy';
-});
+window.addEventListener('scroll', handleScroll, { passive: true });
+
+// Optimize images and performance
+if ('IntersectionObserver' in window) {
+    const imageObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                img.loading = 'lazy';
+                imageObserver.unobserve(img);
+            }
+        });
+    });
+
+    document.querySelectorAll('img').forEach(img => imageObserver.observe(img));
+}
+
+// Performance: prefetch next page
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+        const link = document.createElement('link');
+        link.rel = 'prefetch';
+        link.href = 'commands.html';
+        document.head.appendChild(link);
+    });
+}
