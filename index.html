@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="MyOs - A minimal 64-bit operating system with shell interface, filesystem, and system utilities.">
+    <meta property="og:title" content="MyOs - Minimal 64-bit OS">
+    <meta property="og:description"
+        content="A lightweight OS featuring GRUB multiboot, long mode CPU, and essential system utilities">
+    <title>MyOs - Minimal 64-bit Operating System</title>
+    <link rel="stylesheet" href="styles.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-brand">
+                <span class="terminal-icon">⌘</span>
+                <span class="brand-text">MyOs</span>
+            </div>
+            <button class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="commands.html">Commands</a></li>
+                <li><a href="#download">Download</a></li>
+                <li><a href="#wiki">Wiki</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <div class="badge">64-bit Operating System</div>
+            <h1 class="hero-title gradient-text">MyOs</h1>
+            <p class="hero-subtitle">Minimal 64-bit Operating System</p>
+            <p class="hero-description">
+                A lightweight OS featuring GRUB multiboot, long mode CPU, VGA terminal,
+                shell interface, RAM filesystem, and essential system utilities
+            </p>
+
+            <div class="terminal-demo">
+                <div class="terminal-header">
+                    <div class="terminal-dot red"></div>
+                    <div class="terminal-dot yellow"></div>
+                    <div class="terminal-dot green"></div>
+                    <span>terminal</span>
+                </div>
+                <div class="terminal-body">
+                    <div><span class="prompt">myos</span><span class="arrow">~></span><span>help</span></div>
+                    <div class="output">Available commands: help, clear, uptime, mem, echo, ls, cd, cat...</div>
+                    <div><span class="prompt">myos</span><span class="arrow">~></span><span class="cursor">█</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-buttons">
+                <a href="#download" class="btn btn-primary">
+                    <span class="icon">↓</span>
+                    Download ISO
+                </a>
+                <a href="#features" class="btn btn-outline">Explore Features</a>
+            </div>
+
+            <div class="scroll-indicator">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="section-header">
+            <h2 class="gradient-text">Features</h2>
+            <p>Everything you need in a minimal operating system</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">⌨️</div>
+                <h3>Shell Interface</h3>
+                <p>Interactive command-line shell with support for history, tab completion, and keyboard navigation</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📁</div>
+                <h3>RAM Filesystem</h3>
+                <p>In-memory filesystem with directory support, automatic disk persistence, and manual save/load</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⚙️</div>
+                <h3>Built-in Commands</h3>
+                <p>Rich command set including file operations, system info, and utilities</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💾</div>
+                <h3>Memory Management</h3>
+                <p>Simple heap allocator with memory tracking, fragmentation stats, and verification</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⏱️</div>
+                <h3>PIT Timer</h3>
+                <p>Programmable Interval Timer running at 100 Hz for system uptime tracking</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔧</div>
+                <h3>GRUB Bootloader</h3>
+                <p>Multiboot-compliant bootloader with long mode initialization</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Commands Preview -->
+    <section id="commands-preview" class="commands-preview">
+        <div class="section-header">
+            <h2 class="gradient-text">Shell Commands</h2>
+            <p>Powerful command-line interface for system control</p>
+        </div>
+        <div class="commands-categories">
+            <div class="cmd-category">
+                <h3>System</h3>
+                <div class="cmd-badges">
+                    <span class="badge-cmd">help</span>
+                    <span class="badge-cmd">clear</span>
+                    <span class="badge-cmd">uptime</span>
+                    <span class="badge-cmd">mem</span>
+                    <span class="badge-cmd">testmem</span>
+                    <span class="badge-cmd">history</span>
+                </div>
+            </div>
+            <div class="cmd-category">
+                <h3>Filesystem</h3>
+                <div class="cmd-badges">
+                    <span class="badge-cmd">pwd</span>
+                    <span class="badge-cmd">ls</span>
+                    <span class="badge-cmd">cd</span>
+                    <span class="badge-cmd">touch</span>
+                    <span class="badge-cmd">cat</span>
+                    <span class="badge-cmd">mkdir</span>
+                    <span class="badge-cmd">rm</span>
+                </div>
+            </div>
+            <div class="cmd-category">
+                <h3>Utilities</h3>
+                <div class="cmd-badges">
+                    <span class="badge-cmd">echo</span>
+                    <span class="badge-cmd">write</span>
+                    <span class="badge-cmd">append</span>
+                    <span class="badge-cmd">savefs</span>
+                    <span class="badge-cmd">loadfs</span>
+                    <span class="badge-cmd">diskinfo</span>
+                </div>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 2rem;">
+            <a href="commands.html" class="btn btn-outline">View All Commands →</a>
+        </div>
+    </section>
+
+    <!-- Screenshots Section -->
+    <section id="screenshots" class="screenshots">
+        <div class="section-header">
+            <h2 class="gradient-text">See It In Action</h2>
+            <p>Terminal screenshots showing MyOs features</p>
+        </div>
+        <div class="screenshots-grid">
+            <div class="screenshot-card">
+                <img src="attached_assets/image_1763983951706.png" alt="MyOs Boot Screen">
+                <p>System initialization and shell startup</p>
+            </div>
+            <div class="screenshot-card">
+                <img src="attached_assets/image_1763983958042.png" alt="Filesystem Commands">
+                <p>Directory listing and navigation</p>
+            </div>
+            <div class="screenshot-card">
+                <img src="attached_assets/image_1763983961851.png" alt="Disk Information">
+                <p>ATA disk information display</p>
+            </div>
+            <div class="screenshot-card">
+                <img src="attached_assets/image_1763983966341.png" alt="Memory Testing">
+                <p>Memory allocation and statistics</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section id="download" class="download">
+        <div class="section-header">
+            <h2 class="gradient-text">Get Started</h2>
+            <p>Build and run MyOs in minutes with these simple steps</p>
+        </div>
+
+        <div class="download-grid">
+            <div class="download-column">
+                <h3>Requirements</h3>
+                <div class="card">
+                    <ul class="requirements-list">
+                        <li><span class="bullet"></span>x86_64-elf-gcc, x86_64-elf-ld - Cross-compiler toolchain</li>
+                        <li><span class="bullet"></span>nasm (Netwide Assembler) - Assembly language compiler</li>
+                        <li><span class="bullet"></span>grub-mkrescue - Bootable ISO creator</li>
+                        <li><span class="bullet"></span>qemu-system-x86_64 - Emulator for testing</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="download-column">
+                <h3>Build & Run</h3>
+                <div class="card">
+                    <div class="code-block">
+                        <div class="code-title">
+                            <span class="code-icon">⌘</span>
+                            1. Clone & Build ISO
+                        </div>
+                        <code>git clone https://github.com/your-repo/myos.git && cd myos && make</code>
+                        <p class="code-desc">Downloads source and creates build/MyOs.iso</p>
+                    </div>
+                    <div class="code-block">
+                        <div class="code-title">
+                            <span class="code-icon">⌘</span>
+                            2. Run in QEMU
+                        </div>
+                        <code>make run</code>
+                        <p class="code-desc">Launches with 8MB auto-created disk image</p>
+                    </div>
+                    <div class="code-block">
+                        <div class="code-title">
+                            <span class="code-icon">⌘</span>
+                            3. Clean build artifacts
+                        </div>
+                        <code>make clean</code>
+                        <p class="code-desc">Removes build directory, ISO and disk image</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="download-cta">
+            <button class="btn btn-primary btn-large" onclick="alert('Download link would go here')">
+                <span class="icon">↓</span>
+                Download Source
+            </button>
+            <p class="license-text">Open source project - MIT License</p>
+        </div>
+    </section>
+
+    <!-- Wiki Section -->
+    <section id="wiki" class="wiki">
+        <div class="section-header">
+            <h2 class="gradient-text">Documentation & Wiki</h2>
+            <p>Learn more about MyOs internals, development process, and contribution guidelines</p>
+        </div>
+        <div class="wiki-grid">
+            <div class="wiki-card">
+                <div class="wiki-icon">🔧</div>
+                <h3>Developer Docs</h3>
+                <p>Architecture overview, build system, and kernel internals</p>
+            </div>
+            <div class="wiki-card">
+                <div class="wiki-icon">⌨️</div>
+                <h3>User Guide</h3>
+                <p>Shell commands, filesystem operations, and system utilities</p>
+            </div>
+            <div class="wiki-card">
+                <div class="wiki-icon">🤝</div>
+                <h3>Contributing</h3>
+                <p>How to contribute code, report bugs, and join the community</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <div class="footer-brand">
+                    <span class="terminal-icon">⌘</span>
+                    <span>MyOs</span>
+                </div>
+                <p>A minimal 64-bit operating system built for learning and experimentation with modern OS concepts</p>
+                <div class="social-icons">
+                    <a href="#" class="social-icon">GitHub</a>
+                    <a href="#" class="social-icon">Docs</a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="#wiki">Documentation</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="commands.html">Commands</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Community</h4>
+                <ul>
+                    <li><a href="#">GitHub Repository</a></li>
+                    <li><a href="#">Report Issues</a></li>
+                    <li><a href="#">Contribute</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 MyOs Project • Released under MIT License • Built for the OS community</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

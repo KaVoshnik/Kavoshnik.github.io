@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="MyOs Shell Commands - Complete reference for all available system commands">
+    <title>Shell Commands - MyOs</title>
+    <link rel="stylesheet" href="styles.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-brand">
+                <span class="terminal-icon">⌘</span>
+                <span class="brand-text">MyOs</span>
+            </div>
+            <button class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#features">Features</a></li>
+                <li><a href="commands.html" class="active">Commands</a></li>
+                <li><a href="index.html#download">Download</a></li>
+                <li><a href="index.html#wiki">Wiki</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <div class="commands-header">
+        <div class="commands-header-content">
+            <div class="commands-title-group">
+                <div class="commands-icon">⌘</div>
+                <h1 class="gradient-text">Shell Commands</h1>
+            </div>
+            <p>Complete reference for all available MyOs shell commands</p>
+        </div>
+    </div>
+
+    <!-- Content -->
+    <div class="commands-container">
+        <!-- Search -->
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Search command..." class="search-input">
+            <span class="search-icon">🔍</span>
+        </div>
+
+        <!-- Results count -->
+        <div id="resultsCount" style="display: none;" class="results-count">
+            <p><span id="resultCount">0</span> commands found</p>
+        </div>
+
+        <!-- Commands by category -->
+        <div id="commandsContainer" class="commands-sections"></div>
+
+        <!-- No results -->
+        <div id="noResults" style="display: none;" class="no-results">
+            <div class="no-results-icon">⌘</div>
+            <h3 class="gradient-text">Commands not found</h3>
+            <p id="noResultsText">No results found. Try changing your search query.</p>
+            <button onclick="document.getElementById('searchInput').value = ''; filterCommands();"
+                class="btn btn-outline">Clear search</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <div class="footer-brand">
+                    <span class="terminal-icon">⌘</span>
+                    <span>MyOs</span>
+                </div>
+                <p>A minimal 64-bit operating system built for learning and experimentation with modern OS concepts</p>
+            </div>
+            <div class="footer-column">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="index.html#wiki">Documentation</a></li>
+                    <li><a href="index.html#features">Features</a></li>
+                    <li><a href="commands.html">Commands</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Community</h4>
+                <ul>
+                    <li><a href="#">GitHub Repository</a></li>
+                    <li><a href="#">Report Issues</a></li>
+                    <li><a href="#">Contribute</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 MyOs Project • Released under MIT License • Built for the OS community</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
