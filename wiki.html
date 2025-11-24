@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="MyOs Wiki - Learn about OS development, architecture, and internals">
+    <title>Wiki & Documentation - MyOs</title>
+    <link rel="stylesheet" href="styles.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-brand">
+                <span class="terminal-icon">⌘</span>
+                <span class="brand-text">MyOs</span>
+            </div>
+            <button class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#features">Features</a></li>
+                <li><a href="commands.html">Commands</a></li>
+                <li><a href="index.html#download">Download</a></li>
+                <li><a href="wiki.html" class="active">Wiki</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="wiki-header">
+        <div class="wiki-header-content">
+            <div class="wiki-title-group">
+                <div class="wiki-icon-large">📚</div>
+                <h1 class="gradient-text">MyOs Wiki</h1>
+            </div>
+            <p>Documentation, guides, and technical resources</p>
+        </div>
+    </div>
+
+    <div class="wiki-container">
+        <aside class="wiki-sidebar">
+            <h3>Quick Navigation</h3>
+            <ul class="wiki-nav">
+                <li><a href="#overview">Overview</a></li>
+                <li><a href="#architecture">Architecture</a></li>
+                <li><a href="#bootloader">Bootloader</a></li>
+                <li><a href="#kernel">Kernel</a></li>
+                <li><a href="#memory">Memory Management</a></li>
+                <li><a href="#filesystem">Filesystem</a></li>
+                <li><a href="#shell">Shell Interface</a></li>
+                <li><a href="#build">Build System</a></li>
+            </ul>
+        </aside>
+
+        <main class="wiki-content">
+            <section id="overview" class="wiki-section fade-in-section">
+                <h2>Overview</h2>
+                <div class="info-card">
+                    <p><strong>MyOs</strong> is a minimal 64-bit operating system developed for learning and experimentation with modern OS development concepts. The project demonstrates core operating system principles including bootloading, memory management, filesystem operations, and shell command processing.</p>
+                    
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <strong>Language:</strong> Assembly & C
+                        </div>
+                        <div class="info-item">
+                            <strong>Architecture:</strong> x86_64
+                        </div>
+                        <div class="info-item">
+                            <strong>Bootloader:</strong> GRUB Multiboot
+                        </div>
+                        <div class="info-item">
+                            <strong>License:</strong> MIT
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="architecture" class="wiki-section fade-in-section">
+                <h2>System Architecture</h2>
+                <div class="info-card">
+                    <h3>Core Components</h3>
+                    <ul class="feature-list">
+                        <li><strong>GRUB Bootloader:</strong> Multiboot-compliant bootloader that initializes long mode (64-bit)</li>
+                        <li><strong>Kernel:</strong> Minimal kernel written in Assembly and C</li>
+                        <li><strong>VGA Terminal:</strong> 80x25 character display with color support</li>
+                        <li><strong>Shell:</strong> Interactive command-line interface with history</li>
+                        <li><strong>RAM Filesystem:</strong> In-memory hierarchical filesystem</li>
+                        <li><strong>Memory Manager:</strong> Simple heap allocator with tracking</li>
+                        <li><strong>PIT Timer:</strong> Programmable Interval Timer at 100 Hz</li>
+                        <li><strong>ATA Driver:</strong> Basic IDE disk interface</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="bootloader" class="wiki-section fade-in-section">
+                <h2>Bootloader & Initialization</h2>
+                <div class="info-card">
+                    <p>MyOs uses GRUB as its bootloader, configured through a multiboot header. The boot process follows these steps:</p>
+                    
+                    <ol class="steps-list">
+                        <li>BIOS loads GRUB from the boot sector</li>
+                        <li>GRUB reads the multiboot header and loads the kernel</li>
+                        <li>CPU is switched to long mode (64-bit)</li>
+                        <li>Kernel initialization begins (GDT, IDT setup)</li>
+                        <li>VGA terminal is initialized</li>
+                        <li>PIT timer starts running</li>
+                        <li>RAM filesystem is created</li>
+                        <li>Shell prompt appears</li>
+                    </ol>
+                </div>
+            </section>
+
+            <section id="kernel" class="wiki-section fade-in-section">
+                <h2>Kernel Structure</h2>
+                <div class="info-card">
+                    <h3>Key Modules</h3>
+                    
+                    <div class="code-example">
+                        <div class="code-title">Kernel Components</div>
+                        <pre><code>kernel/
+├── boot.asm          # Assembly bootloader code
+├── kernel.c          # Main kernel entry point
+├── terminal.c        # VGA text mode driver
+├── shell.c           # Command-line interface
+├── fs.c              # RAM filesystem implementation
+├── heap.c            # Memory allocator
+├── timer.c           # PIT timer driver
+└── ata.c             # ATA disk driver</code></pre>
+                    </div>
+
+                    <p>The kernel is designed to be minimal yet functional, providing essential OS services without unnecessary complexity.</p>
+                </div>
+            </section>
+
+            <section id="memory" class="wiki-section fade-in-section">
+                <h2>Memory Management</h2>
+                <div class="info-card">
+                    <h3>Heap Allocator</h3>
+                    <p>MyOs implements a simple first-fit heap allocator with the following features:</p>
+                    
+                    <ul class="feature-list">
+                        <li>Dynamic memory allocation (malloc/free)</li>
+                        <li>Block merging to reduce fragmentation</li>
+                        <li>Memory tracking and statistics</li>
+                        <li>Heap verification for debugging</li>
+                    </ul>
+
+                    <div class="code-example">
+                        <div class="code-title">Memory Commands</div>
+                        <pre><code>mem      # Show heap statistics
+testmem  # Allocate test blocks and verify heap</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <section id="filesystem" class="wiki-section fade-in-section">
+                <h2>RAM Filesystem</h2>
+                <div class="info-card">
+                    <p>The filesystem is entirely memory-based, providing fast access but requiring manual persistence:</p>
+                    
+                    <h3>Features</h3>
+                    <ul class="feature-list">
+                        <li>Hierarchical directory structure</li>
+                        <li>File and directory support</li>
+                        <li>Unix-like path navigation</li>
+                        <li>Manual save/load to ATA disk</li>
+                    </ul>
+
+                    <h3>File Operations</h3>
+                    <div class="cmd-grid">
+                        <div class="cmd-item">
+                            <code>pwd</code>
+                            <p>Print working directory</p>
+                        </div>
+                        <div class="cmd-item">
+                            <code>ls [path]</code>
+                            <p>List directory contents</p>
+                        </div>
+                        <div class="cmd-item">
+                            <code>cd path</code>
+                            <p>Change directory</p>
+                        </div>
+                        <div class="cmd-item">
+                            <code>mkdir path</code>
+                            <p>Create directory</p>
+                        </div>
+                        <div class="cmd-item">
+                            <code>touch path</code>
+                            <p>Create file</p>
+                        </div>
+                        <div class="cmd-item">
+                            <code>cat path</code>
+                            <p>Display file</p>
+                        </div>
+                        <div class="cmd-item">
+                            <code>savefs</code>
+                            <p>Save to disk</p>
+                        </div>
+                        <div class="cmd-item">
+                            <code>loadfs</code>
+                            <p>Load from disk</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="shell" class="wiki-section fade-in-section">
+                <h2>Shell Interface</h2>
+                <div class="info-card">
+                    <p>The MyOs shell provides an interactive command-line interface with:</p>
+                    
+                    <ul class="feature-list">
+                        <li><strong>Command History:</strong> Use <code>history</code> to view past commands</li>
+                        <li><strong>Built-in Commands:</strong> Over 20 system and utility commands</li>
+                        <li><strong>File Operations:</strong> Full filesystem manipulation</li>
+                        <li><strong>System Info:</strong> Memory stats, uptime, disk information</li>
+                    </ul>
+
+                    <p>See the <a href="commands.html" class="wiki-link">Commands page</a> for a complete reference.</p>
+                </div>
+            </section>
+
+            <section id="build" class="wiki-section fade-in-section">
+                <h2>Build System</h2>
+                <div class="info-card">
+                    <h3>Prerequisites</h3>
+                    <div class="requirements-grid">
+                        <div class="req-item">
+                            <div class="req-icon">🛠️</div>
+                            <h4>x86_64-elf-gcc</h4>
+                            <p>Cross-compiler for 64-bit</p>
+                        </div>
+                        <div class="req-item">
+                            <div class="req-icon">⚙️</div>
+                            <h4>nasm</h4>
+                            <p>Assembler</p>
+                        </div>
+                        <div class="req-item">
+                            <div class="req-icon">💿</div>
+                            <h4>grub-mkrescue</h4>
+                            <p>ISO creator</p>
+                        </div>
+                        <div class="req-item">
+                            <div class="req-icon">🖥️</div>
+                            <h4>qemu-system-x86_64</h4>
+                            <p>Emulator</p>
+                        </div>
+                    </div>
+
+                    <h3>Build Commands</h3>
+                    <div class="code-example">
+                        <pre><code># Clone the repository
+git clone https://github.com/KaVoshnik/MyOs.git
+cd MyOs
+
+# Build the ISO image
+make
+
+# Run in QEMU
+make run
+
+# Clean build artifacts
+make clean</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <div class="wiki-footer-cta">
+                <h2>Ready to explore?</h2>
+                <p>Download the ISO or view the source code on GitHub</p>
+                <div class="cta-buttons">
+                    <a href="https://drive.google.com/drive/folders/1ohPWVVUCRF67QDXHc0DPyWFVI-qS9yYR?usp=sharing" target="_blank" class="btn btn-primary">
+                        <span class="icon">↓</span>
+                        Download ISO
+                    </a>
+                    <a href="https://github.com/KaVoshnik/MyOs" target="_blank" class="btn btn-outline">
+                        <span class="icon">→</span>
+                        View on GitHub
+                    </a>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <div class="footer-brand">
+                    <span class="terminal-icon">⌘</span>
+                    <span>MyOs</span>
+                </div>
+                <p>A minimal 64-bit operating system built for learning and experimentation</p>
+                <div class="social-links">
+                    <a href="https://github.com/KaVoshnik/MyOs" target="_blank" class="social-link">
+                        <span class="icon">→</span> GitHub
+                    </a>
+                    <a href="https://github.com/KaVoshnik/MyOs/issues" target="_blank" class="social-link">
+                        <span class="icon">!</span> Issues
+                    </a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="wiki.html">Documentation</a></li>
+                    <li><a href="index.html#features">Features</a></li>
+                    <li><a href="commands.html">Commands</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Community</h4>
+                <ul>
+                    <li><a href="https://github.com/KaVoshnik/MyOs" target="_blank">GitHub Repository</a></li>
+                    <li><a href="https://github.com/KaVoshnik/MyOs/issues" target="_blank">Report Issues</a></li>
+                    <li><a href="https://drive.google.com/drive/folders/1ohPWVVUCRF67QDXHc0DPyWFVI-qS9yYR?usp=sharing" target="_blank">Download</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 MyOs Project • Released under MIT License • Built with passion for OS development</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
