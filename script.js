@@ -289,6 +289,48 @@ window.addEventListener('load', () => {
     });
 });
 
+// Copy to clipboard for commands
+const copyToClipboard = (text, button) => {
+    navigator.clipboard.writeText(text).then(() => {
+        const originalText = button.textContent;
+        button.textContent = '✓ Copied!';
+        button.style.background = 'rgba(34, 197, 94, 0.3)';
+        button.style.borderColor = '#22c55e';
+        button.style.color = '#22c55e';
+        setTimeout(() => {
+            button.textContent = originalText;
+            button.style.background = '';
+            button.style.borderColor = '';
+            button.style.color = '';
+        }, 2000);
+    }).catch(() => {
+        button.textContent = '✗ Failed';
+        setTimeout(() => {
+            button.textContent = 'Copy';
+        }, 1500);
+    });
+};
+
+// Back to top functionality
+document.addEventListener('DOMContentLoaded', () => {
+    const backToTopBtn = document.getElementById('backToTop');
+    if (backToTopBtn) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.style.opacity = '1';
+                backToTopBtn.style.pointerEvents = 'auto';
+            } else {
+                backToTopBtn.style.opacity = '0';
+                backToTopBtn.style.pointerEvents = 'none';
+            }
+        });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+});
+
 const badgeCmds = document.querySelectorAll('.badge-cmd');
 badgeCmds.forEach(badge => {
     badge.addEventListener('click', function() {
