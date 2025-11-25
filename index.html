@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
         content="MyOs - Минимальная 64-битная операционная система с интерфейсом командной строки, RAM-файловой системой и базовыми системными утилитами. Изучайте разработку ОС с загрузчиком GRUB, 64-битным режимом процессора и VGA терминалом.">
-    <meta name="keywords" content="MyOs, операционная система, ОС, минимальная, 64-бит, GRUB, ядро, оболочка, файловая система">
+    <meta name="keywords"
+        content="MyOs, операционная система, ОС, минимальная, 64-бит, GRUB, ядро, оболочка, файловая система">
     <meta name="author" content="MyOs Project">
     <meta property="og:title" content="MyOs - Минимальная 64-битная операционная система">
     <meta property="og:description"
@@ -76,7 +77,8 @@
             </div>
 
             <div class="hero-buttons">
-                <a href="https://drive.google.com/drive/folders/1ohPWVVUCRF67QDXHc0DPyWFVI-qS9yYR?usp=sharing" target="_blank" class="btn btn-primary">
+                <a href="https://drive.google.com/drive/folders/1ohPWVVUCRF67QDXHc0DPyWFVI-qS9yYR?usp=sharing"
+                    target="_blank" class="btn btn-primary">
                     <span class="icon">↓</span>
                     Скачать ISO
                 </a>
@@ -101,17 +103,19 @@
             <div class="feature-card">
                 <div class="feature-icon">⌨️</div>
                 <h3>Интерфейс командной строки</h3>
-                <p>Интерактивная командная оболочка с поддержкой истории, автодополнения и навигации с клавиатуры</p>
+                <p>Интерактивная командная оболочка с автодополнением Tab, историей Up/Down, поиском Ctrl+R и цветным
+                    выводом ANSI</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">📁</div>
                 <h3>RAM файловая система</h3>
-                <p>Файловая система в памяти с поддержкой директорий, автоматическим сохранением на диск и ручной загрузкой</p>
+                <p>Файловая система в памяти с поддержкой директорий, древовидной структурой и возможностью сохранения
+                    на ATA диск</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">⚙️</div>
                 <h3>Встроенные команды</h3>
-                <p>Богатый набор команд включая файловые операции, системную информацию и утилиты</p>
+                <p>30 команд: файловые операции, поиск и анализ, системная информация и утилиты для работы с диском</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">💾</div>
@@ -147,6 +151,8 @@
                     <span class="badge-cmd">mem</span>
                     <span class="badge-cmd">testmem</span>
                     <span class="badge-cmd">history</span>
+                    <span class="badge-cmd">poweroff</span>
+                    <span class="badge-cmd">reboot</span>
                 </div>
             </div>
             <div class="cmd-category">
@@ -159,17 +165,29 @@
                     <span class="badge-cmd">cat</span>
                     <span class="badge-cmd">mkdir</span>
                     <span class="badge-cmd">rm</span>
+                    <span class="badge-cmd">cp</span>
+                    <span class="badge-cmd">mv</span>
+                </div>
+            </div>
+            <div class="cmd-category">
+                <h3>Поиск и анализ</h3>
+                <div class="cmd-badges">
+                    <span class="badge-cmd">find</span>
+                    <span class="badge-cmd">grep</span>
+                    <span class="badge-cmd">head</span>
+                    <span class="badge-cmd">tail</span>
+                    <span class="badge-cmd">wc</span>
+                    <span class="badge-cmd">hexdump</span>
                 </div>
             </div>
             <div class="cmd-category">
                 <h3>Утилиты</h3>
                 <div class="cmd-badges">
                     <span class="badge-cmd">echo</span>
-                    <span class="badge-cmd">write</span>
-                    <span class="badge-cmd">append</span>
+                    <span class="badge-cmd">diskinfo</span>
                     <span class="badge-cmd">savefs</span>
                     <span class="badge-cmd">loadfs</span>
-                    <span class="badge-cmd">diskinfo</span>
+                    <span class="badge-cmd">ansi</span>
                 </div>
             </div>
         </div>
@@ -256,7 +274,8 @@
         </div>
 
         <div class="download-cta">
-            <a href="https://drive.google.com/drive/folders/1ohPWVVUCRF67QDXHc0DPyWFVI-qS9yYR?usp=sharing" target="_blank" class="btn btn-primary btn-large">
+            <a href="https://drive.google.com/drive/folders/1ohPWVVUCRF67QDXHc0DPyWFVI-qS9yYR?usp=sharing"
+                target="_blank" class="btn btn-primary btn-large">
                 <span class="icon">↓</span>
                 Скачать ISO
             </a>
@@ -292,7 +311,8 @@
                     <span class="terminal-icon">⌘</span>
                     <span>MyOs</span>
                 </div>
-                <p>Минимальная 64-битная операционная система, созданная для обучения и экспериментов с современными концепциями ОС</p>
+                <p>Минимальная 64-битная операционная система, созданная для обучения и экспериментов с современными
+                    концепциями ОС</p>
                 <div class="social-icons">
                     <a href="https://github.com/KaVoshnik/MyOs" target="_blank" class="social-icon">GitHub</a>
                     <a href="wiki.html" class="social-icon">Документация</a>
@@ -312,12 +332,13 @@
                 <ul>
                     <li><a href="https://github.com/KaVoshnik/MyOs" target="_blank">Репозиторий GitHub</a></li>
                     <li><a href="https://github.com/KaVoshnik/MyOs/issues" target="_blank">Сообщить о проблеме</a></li>
-                    <li><a href="https://drive.google.com/drive/folders/1ohPWVVUCRF67QDXHc0DPyWFVI-qS9yYR?usp=sharing" target="_blank">Скачать</a></li>
+                    <li><a href="https://drive.google.com/drive/folders/1ohPWVVUCRF67QDXHc0DPyWFVI-qS9yYR?usp=sharing"
+                            target="_blank">Скачать</a></li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>© 2025 MyOs Project • Выпущено под лицензией MIT • Создано для сообщества разработчиков ОС</p>
+            <p>© 2025 MyOs Project • Выпущено под лицензией MIT</p>
         </div>
     </footer>
 
@@ -331,7 +352,7 @@
     <script src="script.js"></script>
     <script>
         if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('sw.js').catch(() => {});
+            navigator.serviceWorker.register('sw.js').catch(() => { });
         }
     </script>
 </body>

@@ -68,8 +68,11 @@
             <section id="overview" class="wiki-section fade-in-section">
                 <h2>Обзор</h2>
                 <div class="info-card">
-                    <p><strong>MyOs</strong> — минимальная 64-битная операционная система, разработанная для обучения и экспериментов с современными концепциями разработки ОС. Проект демонстрирует основные принципы операционных систем, включая загрузку, управление памятью, операции с файловой системой и обработку команд оболочки.</p>
-                    
+                    <p><strong>MyOs</strong> — простая операционная система с собственным ядром, файловой системой,
+                        оболочкой и драйверами устройств. Система поддерживает многозадачность через прерывания,
+                        управление памятью, работу с дисками ATA и интерактивную оболочку с расширенными возможностями.
+                    </p>
+
                     <div class="info-grid">
                         <div class="info-item">
                             <strong>Язык:</strong> Ассемблер и C
@@ -92,14 +95,21 @@
                 <div class="info-card">
                     <h3>Основные компоненты</h3>
                     <ul class="feature-list">
-                        <li><strong>Загрузчик GRUB:</strong> Загрузчик с поддержкой мультизагрузки, инициализирующий 64-битный режим</li>
-                        <li><strong>Ядро:</strong> Минимальное ядро, написанное на ассемблере и C</li>
-                        <li><strong>VGA терминал:</strong> Дисплей 80x25 символов с поддержкой цвета</li>
-                        <li><strong>Командная оболочка:</strong> Интерактивный интерфейс командной строки с историей</li>
-                        <li><strong>RAM файловая система:</strong> Иерархическая файловая система в памяти</li>
-                        <li><strong>Менеджер памяти:</strong> Простой аллокатор кучи с отслеживанием</li>
-                        <li><strong>PIT таймер:</strong> Программируемый интервальный таймер на 100 Гц</li>
-                        <li><strong>Драйвер ATA:</strong> Базовый интерфейс IDE диска</li>
+                        <li><strong>Ядро (kernel.c):</strong> Основной компонент, инициализирующий все подсистемы</li>
+                        <li><strong>Загрузчик (boot.asm):</strong> Multiboot-совместимый загрузчик для x86_64</li>
+                        <li><strong>Драйвер терминала (terminal.c):</strong> Управление выводом на экран с поддержкой
+                            ANSI escape-последовательностей</li>
+                        <li><strong>Драйвер клавиатуры (keyboard.c):</strong> Обработка ввода с клавиатуры с поддержкой
+                            специальных клавиш</li>
+                        <li><strong>Драйвер прерываний (interrupts.c):</strong> Обработка аппаратных и программных
+                            прерываний</li>
+                        <li><strong>Таймер (pit.c):</strong> Программируемый интервальный таймер</li>
+                        <li><strong>Драйвер ATA (ata.c):</strong> Работа с жесткими дисками через ATA интерфейс</li>
+                        <li><strong>Файловая система (filesystem.c):</strong> Виртуальная файловая система в памяти с
+                            возможностью сохранения на диск</li>
+                        <li><strong>Менеджер памяти (memory.c):</strong> Аллокатор памяти с поддержкой выравнивания</li>
+                        <li><strong>Оболочка (shell.c):</strong> Интерактивная командная оболочка с автодополнением и
+                            историей</li>
                     </ul>
                 </div>
             </section>
@@ -107,8 +117,9 @@
             <section id="bootloader" class="wiki-section fade-in-section">
                 <h2>Загрузчик и инициализация</h2>
                 <div class="info-card">
-                    <p>MyOs использует GRUB в качестве загрузчика, настроенного через заголовок мультизагрузки. Процесс загрузки следует этим шагам:</p>
-                    
+                    <p>MyOs использует GRUB в качестве загрузчика, настроенного через заголовок мультизагрузки. Процесс
+                        загрузки следует этим шагам:</p>
+
                     <ol class="steps-list">
                         <li>BIOS загружает GRUB из загрузочного сектора</li>
                         <li>GRUB читает заголовок мультизагрузки и загружает ядро</li>
@@ -126,7 +137,7 @@
                 <h2>Структура ядра</h2>
                 <div class="info-card">
                     <h3>Ключевые модули</h3>
-                    
+
                     <div class="code-example">
                         <div class="code-title">Компоненты ядра</div>
                         <pre><code>kernel/
@@ -140,7 +151,8 @@
 └── ata.c             # Драйвер ATA диска</code></pre>
                     </div>
 
-                    <p>Ядро спроектировано минимальным, но функциональным, предоставляя необходимые службы ОС без излишней сложности.</p>
+                    <p>Ядро спроектировано минимальным, но функциональным, предоставляя необходимые службы ОС без
+                        излишней сложности.</p>
                 </div>
             </section>
 
@@ -149,7 +161,7 @@
                 <div class="info-card">
                     <h3>Аллокатор кучи</h3>
                     <p>MyOs реализует простой аллокатор кучи first-fit со следующими возможностями:</p>
-                    
+
                     <ul class="feature-list">
                         <li>Динамическое выделение памяти (malloc/free)</li>
                         <li>Объединение блоков для уменьшения фрагментации</li>
@@ -168,8 +180,9 @@ testmem  # Выделить тестовые блоки и проверить к
             <section id="filesystem" class="wiki-section fade-in-section">
                 <h2>RAM файловая система</h2>
                 <div class="info-card">
-                    <p>Файловая система полностью основана на памяти, обеспечивая быстрый доступ, но требуя ручного сохранения:</p>
-                    
+                    <p>Файловая система полностью основана на памяти, обеспечивая быстрый доступ, но требуя ручного
+                        сохранения:</p>
+
                     <h3>Возможности</h3>
                     <ul class="feature-list">
                         <li>Иерархическая структура директорий</li>
@@ -219,16 +232,45 @@ testmem  # Выделить тестовые блоки и проверить к
             <section id="shell" class="wiki-section fade-in-section">
                 <h2>Интерфейс командной строки</h2>
                 <div class="info-card">
-                    <p>Командная оболочка MyOs предоставляет интерактивный интерфейс с:</p>
-                    
+                    <p>Командная оболочка MyOs предоставляет мощный интерактивный интерфейс с расширенными
+                        возможностями:</p>
+
+                    <h3>Возможности оболочки</h3>
                     <ul class="feature-list">
-                        <li><strong>История команд:</strong> Используйте <code>history</code> для просмотра прошлых команд</li>
-                        <li><strong>Встроенные команды:</strong> Более 20 системных команд и утилит</li>
-                        <li><strong>Файловые операции:</strong> Полная работа с файловой системой</li>
-                        <li><strong>Системная информация:</strong> Статистика памяти, время работы, информация о диске</li>
+                        <li><strong>Автодополнение команд (Tab):</strong> Нажмите Tab для автодополнения команд во время
+                            ввода</li>
+                        <li><strong>История команд (Up/Down):</strong> Используйте стрелки вверх/вниз для навигации по
+                            истории выполненных команд</li>
+                        <li><strong>Поиск по истории (Ctrl+R):</strong> Быстрый поиск и выполнение ранее введенных
+                            команд</li>
+                        <li><strong>Цветной вывод:</strong> Полная поддержка ANSI escape sequences для цветного и
+                            форматированного вывода</li>
+                        <li><strong>Автосохранение:</strong> Автоматическое сохранение файловой системы при изменениях
+                        </li>
                     </ul>
 
-                    <p>Смотрите <a href="commands.html" class="wiki-link">страницу команд</a> для полного справочника.</p>
+                    <h3>Поддержка ANSI</h3>
+                    <div class="code-example">
+                        <div class="code-title">Поддерживаемые ANSI последовательности</div>
+                        <pre><code>Цвета текста и фона: 30-37, 40-47, 90-97, 100-107
+Стили текста: жирный, инверсный
+Управление курсором и очистка экрана
+
+Команда: ansi  # Тест ANSI последовательностей</code></pre>
+                    </div>
+
+                    <h3>Категории команд</h3>
+                    <ul class="feature-list">
+                        <li><strong>Системные команды:</strong> help, clear, uptime, mem, testmem, history, poweroff,
+                            reboot</li>
+                        <li><strong>Файловая система:</strong> pwd, ls, cd, touch, cat, write, append, mkdir, rm, cp, mv
+                        </li>
+                        <li><strong>Поиск и анализ:</strong> find, grep, head, tail, wc, hexdump</li>
+                        <li><strong>Утилиты диска:</strong> diskinfo, savefs, loadfs</li>
+                    </ul>
+
+                    <p>Смотрите <a href="commands.html" class="wiki-link">страницу команд</a> для полного справочника.
+                    </p>
                 </div>
             </section>
 
@@ -281,7 +323,8 @@ make clean</code></pre>
                 <h2>Готовы к изучению?</h2>
                 <p>Скачайте ISO или посмотрите исходный код на GitHub</p>
                 <div class="cta-buttons">
-                    <a href="https://drive.google.com/drive/folders/1ohPWVVUCRF67QDXHc0DPyWFVI-qS9yYR?usp=sharing" target="_blank" class="btn btn-primary">
+                    <a href="https://drive.google.com/drive/folders/1ohPWVVUCRF67QDXHc0DPyWFVI-qS9yYR?usp=sharing"
+                        target="_blank" class="btn btn-primary">
                         <span class="icon">↓</span>
                         Скачать ISO
                     </a>
@@ -325,12 +368,13 @@ make clean</code></pre>
                 <ul>
                     <li><a href="https://github.com/KaVoshnik/MyOs" target="_blank">Репозиторий GitHub</a></li>
                     <li><a href="https://github.com/KaVoshnik/MyOs/issues" target="_blank">Сообщить о проблеме</a></li>
-                    <li><a href="https://drive.google.com/drive/folders/1ohPWVVUCRF67QDXHc0DPyWFVI-qS9yYR?usp=sharing" target="_blank">Скачать</a></li>
+                    <li><a href="https://drive.google.com/drive/folders/1ohPWVVUCRF67QDXHc0DPyWFVI-qS9yYR?usp=sharing"
+                            target="_blank">Скачать</a></li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>© 2025 MyOs Project • Выпущено под лицензией MIT • Создано с любовью к разработке ОС</p>
+            <p>© 2025 MyOs Project • Выпущено под лицензией MIT</p>
         </div>
     </footer>
 
