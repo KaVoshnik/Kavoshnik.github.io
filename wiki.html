@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="MyOs Wiki - Learn about OS development, architecture, and internals">
-    <title>Wiki & Documentation - MyOs</title>
+    <meta name="description" content="MyOs Wiki - Изучайте разработку ОС, архитектуру и внутреннее устройство">
+    <title>Wiki и документация - MyOs</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="manifest" href="manifest.json">
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -29,10 +29,11 @@
                 <span></span>
             </button>
             <ul class="nav-links" id="navLinks">
-                <li><a href="index.html#home">Home</a></li>
-                <li><a href="index.html#features">Features</a></li>
-                <li><a href="commands.html">Commands</a></li>
-                <li><a href="index.html#download">Download</a></li>
+                <li><a href="index.html#home">Главная</a></li>
+                <li><a href="index.html#features">Возможности</a></li>
+                <li><a href="commands.html">Команды</a></li>
+                <li><a href="news.html">Новости</a></li>
+                <li><a href="index.html#download">Скачать</a></li>
                 <li><a href="wiki.html" class="active">Wiki</a></li>
             </ul>
         </div>
@@ -44,249 +45,249 @@
                 <div class="wiki-icon-large">📚</div>
                 <h1 class="gradient-text">MyOs Wiki</h1>
             </div>
-            <p>Documentation, guides, and technical resources</p>
+            <p>Документация, руководства и технические ресурсы</p>
         </div>
     </div>
 
     <div class="wiki-container">
         <aside class="wiki-sidebar">
-            <h3>Quick Navigation</h3>
+            <h3>Быстрая навигация</h3>
             <ul class="wiki-nav">
-                <li><a href="#overview">Overview</a></li>
-                <li><a href="#architecture">Architecture</a></li>
-                <li><a href="#bootloader">Bootloader</a></li>
-                <li><a href="#kernel">Kernel</a></li>
-                <li><a href="#memory">Memory Management</a></li>
-                <li><a href="#filesystem">Filesystem</a></li>
-                <li><a href="#shell">Shell Interface</a></li>
-                <li><a href="#build">Build System</a></li>
+                <li><a href="#overview">Обзор</a></li>
+                <li><a href="#architecture">Архитектура</a></li>
+                <li><a href="#bootloader">Загрузчик</a></li>
+                <li><a href="#kernel">Ядро</a></li>
+                <li><a href="#memory">Управление памятью</a></li>
+                <li><a href="#filesystem">Файловая система</a></li>
+                <li><a href="#shell">Интерфейс командной строки</a></li>
+                <li><a href="#build">Система сборки</a></li>
             </ul>
         </aside>
 
         <main class="wiki-content">
             <section id="overview" class="wiki-section fade-in-section">
-                <h2>Overview</h2>
+                <h2>Обзор</h2>
                 <div class="info-card">
-                    <p><strong>MyOs</strong> is a minimal 64-bit operating system developed for learning and experimentation with modern OS development concepts. The project demonstrates core operating system principles including bootloading, memory management, filesystem operations, and shell command processing.</p>
+                    <p><strong>MyOs</strong> — минимальная 64-битная операционная система, разработанная для обучения и экспериментов с современными концепциями разработки ОС. Проект демонстрирует основные принципы операционных систем, включая загрузку, управление памятью, операции с файловой системой и обработку команд оболочки.</p>
                     
                     <div class="info-grid">
                         <div class="info-item">
-                            <strong>Language:</strong> Assembly & C
+                            <strong>Язык:</strong> Ассемблер и C
                         </div>
                         <div class="info-item">
-                            <strong>Architecture:</strong> x86_64
+                            <strong>Архитектура:</strong> x86_64
                         </div>
                         <div class="info-item">
-                            <strong>Bootloader:</strong> GRUB Multiboot
+                            <strong>Загрузчик:</strong> GRUB с поддержкой мультизагрузки
                         </div>
                         <div class="info-item">
-                            <strong>License:</strong> MIT
+                            <strong>Лицензия:</strong> MIT
                         </div>
                     </div>
                 </div>
             </section>
 
             <section id="architecture" class="wiki-section fade-in-section">
-                <h2>System Architecture</h2>
+                <h2>Архитектура системы</h2>
                 <div class="info-card">
-                    <h3>Core Components</h3>
+                    <h3>Основные компоненты</h3>
                     <ul class="feature-list">
-                        <li><strong>GRUB Bootloader:</strong> Multiboot-compliant bootloader that initializes long mode (64-bit)</li>
-                        <li><strong>Kernel:</strong> Minimal kernel written in Assembly and C</li>
-                        <li><strong>VGA Terminal:</strong> 80x25 character display with color support</li>
-                        <li><strong>Shell:</strong> Interactive command-line interface with history</li>
-                        <li><strong>RAM Filesystem:</strong> In-memory hierarchical filesystem</li>
-                        <li><strong>Memory Manager:</strong> Simple heap allocator with tracking</li>
-                        <li><strong>PIT Timer:</strong> Programmable Interval Timer at 100 Hz</li>
-                        <li><strong>ATA Driver:</strong> Basic IDE disk interface</li>
+                        <li><strong>Загрузчик GRUB:</strong> Загрузчик с поддержкой мультизагрузки, инициализирующий 64-битный режим</li>
+                        <li><strong>Ядро:</strong> Минимальное ядро, написанное на ассемблере и C</li>
+                        <li><strong>VGA терминал:</strong> Дисплей 80x25 символов с поддержкой цвета</li>
+                        <li><strong>Командная оболочка:</strong> Интерактивный интерфейс командной строки с историей</li>
+                        <li><strong>RAM файловая система:</strong> Иерархическая файловая система в памяти</li>
+                        <li><strong>Менеджер памяти:</strong> Простой аллокатор кучи с отслеживанием</li>
+                        <li><strong>PIT таймер:</strong> Программируемый интервальный таймер на 100 Гц</li>
+                        <li><strong>Драйвер ATA:</strong> Базовый интерфейс IDE диска</li>
                     </ul>
                 </div>
             </section>
 
             <section id="bootloader" class="wiki-section fade-in-section">
-                <h2>Bootloader & Initialization</h2>
+                <h2>Загрузчик и инициализация</h2>
                 <div class="info-card">
-                    <p>MyOs uses GRUB as its bootloader, configured through a multiboot header. The boot process follows these steps:</p>
+                    <p>MyOs использует GRUB в качестве загрузчика, настроенного через заголовок мультизагрузки. Процесс загрузки следует этим шагам:</p>
                     
                     <ol class="steps-list">
-                        <li>BIOS loads GRUB from the boot sector</li>
-                        <li>GRUB reads the multiboot header and loads the kernel</li>
-                        <li>CPU is switched to long mode (64-bit)</li>
-                        <li>Kernel initialization begins (GDT, IDT setup)</li>
-                        <li>VGA terminal is initialized</li>
-                        <li>PIT timer starts running</li>
-                        <li>RAM filesystem is created</li>
-                        <li>Shell prompt appears</li>
+                        <li>BIOS загружает GRUB из загрузочного сектора</li>
+                        <li>GRUB читает заголовок мультизагрузки и загружает ядро</li>
+                        <li>Процессор переключается в 64-битный режим</li>
+                        <li>Начинается инициализация ядра (настройка GDT, IDT)</li>
+                        <li>Инициализируется VGA терминал</li>
+                        <li>Запускается PIT таймер</li>
+                        <li>Создается RAM файловая система</li>
+                        <li>Появляется приглашение командной строки</li>
                     </ol>
                 </div>
             </section>
 
             <section id="kernel" class="wiki-section fade-in-section">
-                <h2>Kernel Structure</h2>
+                <h2>Структура ядра</h2>
                 <div class="info-card">
-                    <h3>Key Modules</h3>
+                    <h3>Ключевые модули</h3>
                     
                     <div class="code-example">
-                        <div class="code-title">Kernel Components</div>
+                        <div class="code-title">Компоненты ядра</div>
                         <pre><code>kernel/
-├── boot.asm          # Assembly bootloader code
-├── kernel.c          # Main kernel entry point
-├── terminal.c        # VGA text mode driver
-├── shell.c           # Command-line interface
-├── fs.c              # RAM filesystem implementation
-├── heap.c            # Memory allocator
-├── timer.c           # PIT timer driver
-└── ata.c             # ATA disk driver</code></pre>
+├── boot.asm          # Код загрузчика на ассемблере
+├── kernel.c          # Главная точка входа ядра
+├── terminal.c        # Драйвер текстового режима VGA
+├── shell.c           # Интерфейс командной строки
+├── fs.c              # Реализация RAM файловой системы
+├── heap.c            # Аллокатор памяти
+├── timer.c           # Драйвер PIT таймера
+└── ata.c             # Драйвер ATA диска</code></pre>
                     </div>
 
-                    <p>The kernel is designed to be minimal yet functional, providing essential OS services without unnecessary complexity.</p>
+                    <p>Ядро спроектировано минимальным, но функциональным, предоставляя необходимые службы ОС без излишней сложности.</p>
                 </div>
             </section>
 
             <section id="memory" class="wiki-section fade-in-section">
-                <h2>Memory Management</h2>
+                <h2>Управление памятью</h2>
                 <div class="info-card">
-                    <h3>Heap Allocator</h3>
-                    <p>MyOs implements a simple first-fit heap allocator with the following features:</p>
+                    <h3>Аллокатор кучи</h3>
+                    <p>MyOs реализует простой аллокатор кучи first-fit со следующими возможностями:</p>
                     
                     <ul class="feature-list">
-                        <li>Dynamic memory allocation (malloc/free)</li>
-                        <li>Block merging to reduce fragmentation</li>
-                        <li>Memory tracking and statistics</li>
-                        <li>Heap verification for debugging</li>
+                        <li>Динамическое выделение памяти (malloc/free)</li>
+                        <li>Объединение блоков для уменьшения фрагментации</li>
+                        <li>Отслеживание памяти и статистика</li>
+                        <li>Верификация кучи для отладки</li>
                     </ul>
 
                     <div class="code-example">
-                        <div class="code-title">Memory Commands</div>
-                        <pre><code>mem      # Show heap statistics
-testmem  # Allocate test blocks and verify heap</code></pre>
+                        <div class="code-title">Команды для работы с памятью</div>
+                        <pre><code>mem      # Показать статистику кучи
+testmem  # Выделить тестовые блоки и проверить кучу</code></pre>
                     </div>
                 </div>
             </section>
 
             <section id="filesystem" class="wiki-section fade-in-section">
-                <h2>RAM Filesystem</h2>
+                <h2>RAM файловая система</h2>
                 <div class="info-card">
-                    <p>The filesystem is entirely memory-based, providing fast access but requiring manual persistence:</p>
+                    <p>Файловая система полностью основана на памяти, обеспечивая быстрый доступ, но требуя ручного сохранения:</p>
                     
-                    <h3>Features</h3>
+                    <h3>Возможности</h3>
                     <ul class="feature-list">
-                        <li>Hierarchical directory structure</li>
-                        <li>File and directory support</li>
-                        <li>Unix-like path navigation</li>
-                        <li>Manual save/load to ATA disk</li>
+                        <li>Иерархическая структура директорий</li>
+                        <li>Поддержка файлов и директорий</li>
+                        <li>Unix-подобная навигация по путям</li>
+                        <li>Ручное сохранение/загрузка на ATA диск</li>
                     </ul>
 
-                    <h3>File Operations</h3>
+                    <h3>Файловые операции</h3>
                     <div class="cmd-grid">
                         <div class="cmd-item">
                             <code>pwd</code>
-                            <p>Print working directory</p>
+                            <p>Показать текущую директорию</p>
                         </div>
                         <div class="cmd-item">
                             <code>ls [path]</code>
-                            <p>List directory contents</p>
+                            <p>Список содержимого директории</p>
                         </div>
                         <div class="cmd-item">
                             <code>cd path</code>
-                            <p>Change directory</p>
+                            <p>Изменить директорию</p>
                         </div>
                         <div class="cmd-item">
                             <code>mkdir path</code>
-                            <p>Create directory</p>
+                            <p>Создать директорию</p>
                         </div>
                         <div class="cmd-item">
                             <code>touch path</code>
-                            <p>Create file</p>
+                            <p>Создать файл</p>
                         </div>
                         <div class="cmd-item">
                             <code>cat path</code>
-                            <p>Display file</p>
+                            <p>Показать файл</p>
                         </div>
                         <div class="cmd-item">
                             <code>savefs</code>
-                            <p>Save to disk</p>
+                            <p>Сохранить на диск</p>
                         </div>
                         <div class="cmd-item">
                             <code>loadfs</code>
-                            <p>Load from disk</p>
+                            <p>Загрузить с диска</p>
                         </div>
                     </div>
                 </div>
             </section>
 
             <section id="shell" class="wiki-section fade-in-section">
-                <h2>Shell Interface</h2>
+                <h2>Интерфейс командной строки</h2>
                 <div class="info-card">
-                    <p>The MyOs shell provides an interactive command-line interface with:</p>
+                    <p>Командная оболочка MyOs предоставляет интерактивный интерфейс с:</p>
                     
                     <ul class="feature-list">
-                        <li><strong>Command History:</strong> Use <code>history</code> to view past commands</li>
-                        <li><strong>Built-in Commands:</strong> Over 20 system and utility commands</li>
-                        <li><strong>File Operations:</strong> Full filesystem manipulation</li>
-                        <li><strong>System Info:</strong> Memory stats, uptime, disk information</li>
+                        <li><strong>История команд:</strong> Используйте <code>history</code> для просмотра прошлых команд</li>
+                        <li><strong>Встроенные команды:</strong> Более 20 системных команд и утилит</li>
+                        <li><strong>Файловые операции:</strong> Полная работа с файловой системой</li>
+                        <li><strong>Системная информация:</strong> Статистика памяти, время работы, информация о диске</li>
                     </ul>
 
-                    <p>See the <a href="commands.html" class="wiki-link">Commands page</a> for a complete reference.</p>
+                    <p>Смотрите <a href="commands.html" class="wiki-link">страницу команд</a> для полного справочника.</p>
                 </div>
             </section>
 
             <section id="build" class="wiki-section fade-in-section">
-                <h2>Build System</h2>
+                <h2>Система сборки</h2>
                 <div class="info-card">
-                    <h3>Prerequisites</h3>
+                    <h3>Требования</h3>
                     <div class="requirements-grid">
                         <div class="req-item">
                             <div class="req-icon">🛠️</div>
                             <h4>x86_64-elf-gcc</h4>
-                            <p>Cross-compiler for 64-bit</p>
+                            <p>Кросс-компилятор для 64-бит</p>
                         </div>
                         <div class="req-item">
                             <div class="req-icon">⚙️</div>
                             <h4>nasm</h4>
-                            <p>Assembler</p>
+                            <p>Ассемблер</p>
                         </div>
                         <div class="req-item">
                             <div class="req-icon">💿</div>
                             <h4>grub-mkrescue</h4>
-                            <p>ISO creator</p>
+                            <p>Создатель ISO</p>
                         </div>
                         <div class="req-item">
                             <div class="req-icon">🖥️</div>
                             <h4>qemu-system-x86_64</h4>
-                            <p>Emulator</p>
+                            <p>Эмулятор</p>
                         </div>
                     </div>
 
-                    <h3>Build Commands</h3>
+                    <h3>Команды сборки</h3>
                     <div class="code-example">
-                        <pre><code># Clone the repository
+                        <pre><code># Клонировать репозиторий
 git clone https://github.com/KaVoshnik/MyOs.git
 cd MyOs
 
-# Build the ISO image
+# Собрать ISO образ
 make
 
-# Run in QEMU
+# Запустить в QEMU
 make run
 
-# Clean build artifacts
+# Очистить артефакты сборки
 make clean</code></pre>
                     </div>
                 </div>
             </section>
 
             <div class="wiki-footer-cta">
-                <h2>Ready to explore?</h2>
-                <p>Download the ISO or view the source code on GitHub</p>
+                <h2>Готовы к изучению?</h2>
+                <p>Скачайте ISO или посмотрите исходный код на GitHub</p>
                 <div class="cta-buttons">
                     <a href="https://drive.google.com/drive/folders/1ohPWVVUCRF67QDXHc0DPyWFVI-qS9yYR?usp=sharing" target="_blank" class="btn btn-primary">
                         <span class="icon">↓</span>
-                        Download ISO
+                        Скачать ISO
                     </a>
                     <a href="https://github.com/KaVoshnik/MyOs" target="_blank" class="btn btn-outline">
                         <span class="icon">→</span>
-                        View on GitHub
+                        Посмотреть на GitHub
                     </a>
                 </div>
             </div>
@@ -300,40 +301,41 @@ make clean</code></pre>
                     <span class="terminal-icon">⌘</span>
                     <span>MyOs</span>
                 </div>
-                <p>A minimal 64-bit operating system built for learning and experimentation</p>
+                <p>Минимальная 64-битная операционная система, созданная для обучения и экспериментов</p>
                 <div class="social-links">
                     <a href="https://github.com/KaVoshnik/MyOs" target="_blank" class="social-link">
                         <span class="icon">→</span> GitHub
                     </a>
                     <a href="https://github.com/KaVoshnik/MyOs/issues" target="_blank" class="social-link">
-                        <span class="icon">!</span> Issues
+                        <span class="icon">!</span> Проблемы
                     </a>
                 </div>
             </div>
             <div class="footer-column">
-                <h4>Resources</h4>
+                <h4>Ресурсы</h4>
                 <ul>
-                    <li><a href="wiki.html">Documentation</a></li>
-                    <li><a href="index.html#features">Features</a></li>
-                    <li><a href="commands.html">Commands</a></li>
+                    <li><a href="wiki.html">Документация</a></li>
+                    <li><a href="index.html#features">Возможности</a></li>
+                    <li><a href="commands.html">Команды</a></li>
+                    <li><a href="news.html">Новости</a></li>
                 </ul>
             </div>
             <div class="footer-column">
-                <h4>Community</h4>
+                <h4>Сообщество</h4>
                 <ul>
-                    <li><a href="https://github.com/KaVoshnik/MyOs" target="_blank">GitHub Repository</a></li>
-                    <li><a href="https://github.com/KaVoshnik/MyOs/issues" target="_blank">Report Issues</a></li>
-                    <li><a href="https://drive.google.com/drive/folders/1ohPWVVUCRF67QDXHc0DPyWFVI-qS9yYR?usp=sharing" target="_blank">Download</a></li>
+                    <li><a href="https://github.com/KaVoshnik/MyOs" target="_blank">Репозиторий GitHub</a></li>
+                    <li><a href="https://github.com/KaVoshnik/MyOs/issues" target="_blank">Сообщить о проблеме</a></li>
+                    <li><a href="https://drive.google.com/drive/folders/1ohPWVVUCRF67QDXHc0DPyWFVI-qS9yYR?usp=sharing" target="_blank">Скачать</a></li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>© 2025 MyOs Project • Released under MIT License • Built with passion for OS development</p>
+            <p>© 2025 MyOs Project • Выпущено под лицензией MIT • Создано с любовью к разработке ОС</p>
         </div>
     </footer>
 
     <!-- Back to Top Button -->
-    <button id="backToTop" class="back-to-top" title="Back to top" aria-label="Back to top">
+    <button id="backToTop" class="back-to-top" title="Наверх" aria-label="Наверх">
         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
             <polyline points="18 15 10 7 2 15"></polyline>
         </svg>

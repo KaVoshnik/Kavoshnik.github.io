@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="MyOs Shell Commands - Complete reference for all available system commands">
-    <title>Shell Commands - MyOs</title>
+    <meta name="description" content="Команды командной оболочки MyOs - Полный справочник всех доступных системных команд">
+    <title>Команды командной оболочки - MyOs</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="manifest" href="manifest.json">
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -29,10 +29,11 @@
                 <span></span>
             </button>
             <ul class="nav-links" id="navLinks">
-                <li><a href="index.html#home">Home</a></li>
-                <li><a href="index.html#features">Features</a></li>
-                <li><a href="commands.html" class="active">Commands</a></li>
-                <li><a href="index.html#download">Download</a></li>
+                <li><a href="index.html#home">Главная</a></li>
+                <li><a href="index.html#features">Возможности</a></li>
+                <li><a href="commands.html" class="active">Команды</a></li>
+                <li><a href="news.html">Новости</a></li>
+                <li><a href="index.html#download">Скачать</a></li>
                 <li><a href="wiki.html">Wiki</a></li>
             </ul>
         </div>
@@ -43,9 +44,9 @@
         <div class="commands-header-content">
             <div class="commands-title-group">
                 <div class="commands-icon">⌘</div>
-                <h1 class="gradient-text">Shell Commands</h1>
+                <h1 class="gradient-text">Команды командной оболочки</h1>
             </div>
-            <p>Complete reference for all available MyOs shell commands</p>
+            <p>Полный справочник всех доступных команд оболочки MyOs</p>
         </div>
     </div>
 
@@ -53,13 +54,13 @@
     <div class="commands-container">
         <!-- Search -->
         <div class="search-box">
-            <input type="text" id="searchInput" placeholder="Search command..." class="search-input">
+            <input type="text" id="searchInput" placeholder="Поиск команды..." class="search-input">
             <span class="search-icon">🔍</span>
         </div>
 
         <!-- Results count -->
         <div id="resultsCount" style="display: none;" class="results-count">
-            <p><span id="resultCount">0</span> commands found</p>
+            <p>Найдено команд: <span id="resultCount">0</span></p>
         </div>
 
         <!-- Commands by category -->
@@ -68,10 +69,10 @@
         <!-- No results -->
         <div id="noResults" style="display: none;" class="no-results">
             <div class="no-results-icon">⌘</div>
-            <h3 class="gradient-text">Commands not found</h3>
-            <p id="noResultsText">No results found. Try changing your search query.</p>
+            <h3 class="gradient-text">Команды не найдены</h3>
+            <p id="noResultsText">Результатов не найдено. Попробуйте изменить поисковый запрос.</p>
             <button onclick="document.getElementById('searchInput').value = ''; filterCommands();"
-                class="btn btn-outline">Clear search</button>
+                class="btn btn-outline">Очистить поиск</button>
         </div>
     </div>
 
@@ -83,32 +84,33 @@
                     <span class="terminal-icon">⌘</span>
                     <span>MyOs</span>
                 </div>
-                <p>A minimal 64-bit operating system built for learning and experimentation with modern OS concepts</p>
+                <p>Минимальная 64-битная операционная система, созданная для обучения и экспериментов с современными концепциями ОС</p>
             </div>
             <div class="footer-column">
-                <h4>Resources</h4>
+                <h4>Ресурсы</h4>
                 <ul>
-                    <li><a href="wiki.html">Documentation</a></li>
-                    <li><a href="index.html#features">Features</a></li>
-                    <li><a href="commands.html">Commands</a></li>
+                    <li><a href="wiki.html">Документация</a></li>
+                    <li><a href="index.html#features">Возможности</a></li>
+                    <li><a href="commands.html">Команды</a></li>
+                    <li><a href="news.html">Новости</a></li>
                 </ul>
             </div>
             <div class="footer-column">
-                <h4>Community</h4>
+                <h4>Сообщество</h4>
                 <ul>
-                    <li><a href="https://github.com/KaVoshnik/MyOs" target="_blank">GitHub Repository</a></li>
-                    <li><a href="https://github.com/KaVoshnik/MyOs/issues" target="_blank">Report Issues</a></li>
-                    <li><a href="https://drive.google.com/drive/folders/1ohPWVVUCRF67QDXHc0DPyWFVI-qS9yYR?usp=sharing" target="_blank">Download</a></li>
+                    <li><a href="https://github.com/KaVoshnik/MyOs" target="_blank">Репозиторий GitHub</a></li>
+                    <li><a href="https://github.com/KaVoshnik/MyOs/issues" target="_blank">Сообщить о проблеме</a></li>
+                    <li><a href="https://drive.google.com/drive/folders/1ohPWVVUCRF67QDXHc0DPyWFVI-qS9yYR?usp=sharing" target="_blank">Скачать</a></li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>© 2025 MyOs Project • Released under MIT License • Built for the OS community</p>
+            <p>© 2025 MyOs Project • Выпущено под лицензией MIT • Создано для сообщества разработчиков ОС</p>
         </div>
     </footer>
 
     <!-- Back to Top Button -->
-    <button id="backToTop" class="back-to-top" title="Back to top" aria-label="Back to top">
+    <button id="backToTop" class="back-to-top" title="Наверх" aria-label="Наверх">
         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
             <polyline points="18 15 10 7 2 15"></polyline>
         </svg>

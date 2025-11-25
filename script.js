@@ -36,27 +36,27 @@ if (navLinks) {
 
 // Commands data
 const commands = [
-    { name: 'help', description: 'список команд', category: 'System' },
-    { name: 'clear', description: 'очистка экрана', category: 'System' },
-    { name: 'uptime', description: 'аптайм в секундах', category: 'System' },
-    { name: 'mem', description: 'статистика кучи', category: 'System' },
-    { name: 'testmem', description: 'проверка аллокатора', category: 'System' },
-    { name: 'history', description: 'список последних команд', category: 'System' },
-    { name: 'echo TEXT', description: 'вывод строки', category: 'Utilities' },
-    { name: 'pwd', description: 'показать текущий каталог', category: 'Filesystem' },
-    { name: 'ls [PATH]', description: 'перечислить каталог (. по умолчанию)', category: 'Filesystem' },
-    { name: 'cd PATH', description: 'перейти в каталог (/ по умолчанию)', category: 'Filesystem' },
-    { name: 'touch PATH', description: 'создать/обнулить файл', category: 'Filesystem' },
-    { name: 'cat PATH', description: 'вывести файл на экран', category: 'Filesystem' },
-    { name: 'write PATH DATA', description: 'перезаписать файл строкой DATA', category: 'Filesystem' },
-    { name: 'append PATH DATA', description: 'дописать строку DATA в конец файла', category: 'Filesystem' },
-    { name: 'mkdir PATH', description: 'создать каталог', category: 'Filesystem' },
-    { name: 'rm [-r] PATH', description: 'удалить файл или каталог (-r рекурсивно)', category: 'Filesystem' },
-    { name: 'savefs', description: 'сохранить RAM-ФС на диск', category: 'Utilities' },
-    { name: 'loadfs', description: 'перезагрузить снимок ФС с диска', category: 'Utilities' },
-    { name: 'diskinfo', description: 'информация о подключённом диске', category: 'Utilities' },
-    { name: 'poweroff', description: 'завершить работу виртуальной машины', category: 'Utilities' },
-    { name: 'reboot', description: 'перезапустить виртуальную машину', category: 'Utilities' },
+    { name: 'help', description: 'список команд', category: 'Система' },
+    { name: 'clear', description: 'очистка экрана', category: 'Система' },
+    { name: 'uptime', description: 'аптайм в секундах', category: 'Система' },
+    { name: 'mem', description: 'статистика кучи', category: 'Система' },
+    { name: 'testmem', description: 'проверка аллокатора', category: 'Система' },
+    { name: 'history', description: 'список последних команд', category: 'Система' },
+    { name: 'echo TEXT', description: 'вывод строки', category: 'Утилиты' },
+    { name: 'pwd', description: 'показать текущий каталог', category: 'Файловая система' },
+    { name: 'ls [PATH]', description: 'перечислить каталог (. по умолчанию)', category: 'Файловая система' },
+    { name: 'cd PATH', description: 'перейти в каталог (/ по умолчанию)', category: 'Файловая система' },
+    { name: 'touch PATH', description: 'создать/обнулить файл', category: 'Файловая система' },
+    { name: 'cat PATH', description: 'вывести файл на экран', category: 'Файловая система' },
+    { name: 'write PATH DATA', description: 'перезаписать файл строкой DATA', category: 'Файловая система' },
+    { name: 'append PATH DATA', description: 'дописать строку DATA в конец файла', category: 'Файловая система' },
+    { name: 'mkdir PATH', description: 'создать каталог', category: 'Файловая система' },
+    { name: 'rm [-r] PATH', description: 'удалить файл или каталог (-r рекурсивно)', category: 'Файловая система' },
+    { name: 'savefs', description: 'сохранить RAM-ФС на диск', category: 'Утилиты' },
+    { name: 'loadfs', description: 'перезагрузить снимок ФС с диска', category: 'Утилиты' },
+    { name: 'diskinfo', description: 'информация о подключённом диске', category: 'Утилиты' },
+    { name: 'poweroff', description: 'завершить работу виртуальной машины', category: 'Утилиты' },
+    { name: 'reboot', description: 'перезапустить виртуальную машину', category: 'Утилиты' },
 ];
 
 // Commands page functionality
@@ -359,3 +359,19 @@ document.querySelectorAll('.btn').forEach(btn => {
         setTimeout(() => ripple.remove(), 600);
     });
 });
+
+// News page functionality
+function toggleNewsContent(button) {
+    const card = button.closest('.news-card');
+    const fullContent = card.querySelector('.news-full-content');
+    const isExpanded = fullContent.style.display !== 'none';
+    
+    if (isExpanded) {
+        fullContent.style.display = 'none';
+        button.innerHTML = 'Читать полностью<span class="arrow-icon">→</span>';
+        card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+        fullContent.style.display = 'block';
+        button.innerHTML = 'Свернуть<span class="arrow-icon">↑</span>';
+    }
+}
