@@ -17,6 +17,9 @@
       href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
+    <style>
+      /* Optional: если styles.css отсутствует, можно временно включить базовые стили */
+    </style>
   </head>
 
   <body>
@@ -54,7 +57,7 @@
 
     <div class="news-container">
       <div class="news-grid">
-        <article class="news-card" data-date="2025-01-25">
+        <article class="news-card" data-date="2025-11-25">
           <div class="news-card-header">
             <div class="news-badge">Анонс</div>
             <div class="news-date">25 ноября 2025</div>
@@ -195,36 +198,61 @@
     </div>
 
     <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-column">
-                <div class="footer-brand">
-                    <span class="terminal-icon">⌘</span>
-                    <span>MyOs</span>
-                </div>
-                <p>Минимальная 64-битная операционная система, созданная для обучения и экспериментов с современными
-                    концепциями ОС</p>
-            </div>
-            <div class="footer-column">
-                <h4>Ресурсы</h4>
-                <ul>
-                    <li><a href="wiki.html">Документация</a></li>
-                    <li><a href="index.html#features">Возможности</a></li>
-                    <li><a href="commands.html">Команды</a></li>
-                    <li><a href="news.html">Новости</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h4>Сообщество</h4>
-                <ul>
-                    <li><a href="https://github.com/KaVoshnik/MyOs" target="_blank">Репозиторий GitHub</a></li>
-                    <li><a href="https://github.com/KaVoshnik/MyOs/issues" target="_blank">Сообщить о проблеме</a></li>
-                    <li><a href="https://drive.google.com/drive/folders/1ohPWVVUCRF67QDXHc0DPyWFVI-qS9yYR?usp=sharing"
-                            target="_blank">Скачать</a></li>
-                </ul>
-            </div>
+      <div class="footer-content">
+        <div class="footer-column">
+          <div class="footer-brand">
+            <span class="terminal-icon">⌘</span>
+            <span>MyOs</span>
+          </div>
+          <p>
+            Минимальная 64-битная операционная система, созданная для обучения и
+            экспериментов с современными концепциями ОС
+          </p>
         </div>
-        <div class="footer-bottom">
-            <p>© 2025 MyOs Project • Выпущено под лицензией MIT</p>
+        <div class="footer-column">
+          <h4>Ресурсы</h4>
+          <ul>
+            <li><a href="wiki.html">Документация</a></li>
+            <li><a href="index.html#features">Возможности</a></li>
+            <li><a href="commands.html">Команды</a></li>
+            <li><a href="news.html">Новости</a></li>
+          </ul>
         </div>
-</body>
+        <div class="footer-column">
+          <h4>Сообщество</h4>
+          <ul>
+            <li>
+              <a href="https://github.com/KaVoshnik/MyOs" target="_blank"
+                >Репозиторий GitHub</a
+              >
+            </li>
+            <li>
+              <a href="https://github.com/KaVoshnik/MyOs/issues" target="_blank"
+                >Сообщить о проблеме</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://drive.google.com/drive/folders/1ohPWVVUCRF67QDXHc0DPyWFVI-qS9yYR?usp=sharing"
+                target="_blank"
+                >Скачать</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 MyOs Project • Выпущено под лицензией MIT</p>
+      </div>
+    </footer>
+
+    <script>
+      function toggleNewsContent(button) {
+        const fullContent = button.nextElementSibling;
+        const isVisible = fullContent.style.display === "block";
+        fullContent.style.display = isVisible ? "none" : "block";
+        button.querySelector(".arrow-icon").textContent = isVisible ? "→" : "←";
+      }
+    </script>
+  </body>
 </html>
