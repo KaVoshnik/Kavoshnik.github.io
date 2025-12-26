@@ -38,25 +38,37 @@ if (navLinks) {
 const commands = [
     { name: 'help', description: 'список команд', category: 'Система' },
     { name: 'clear', description: 'очистка экрана', category: 'Система' },
-    { name: 'uptime', description: 'аптайм в секундах', category: 'Система' },
-    { name: 'mem', description: 'статистика кучи', category: 'Система' },
-    { name: 'testmem', description: 'проверка аллокатора', category: 'Система' },
-    { name: 'history', description: 'список последних команд', category: 'Система' },
+    { name: 'uptime', description: 'время работы системы', category: 'Система' },
+    { name: 'mem', description: 'информация о памяти', category: 'Система' },
+    { name: 'testmem', description: 'тест аллокатора памяти', category: 'Система' },
+    { name: 'history', description: 'история команд', category: 'Система' },
+    { name: 'poweroff', description: 'выключение системы', category: 'Система' },
+    { name: 'reboot', description: 'перезагрузка системы', category: 'Система' },
+
+    { name: 'pwd', description: 'текущая директория', category: 'Файловая система' },
+    { name: 'ls [PATH]', description: 'список файлов', category: 'Файловая система' },
+    { name: 'cd PATH', description: 'смена директории', category: 'Файловая система' },
+    { name: 'touch PATH', description: 'создание файла', category: 'Файловая система' },
+    { name: 'cat PATH', description: 'вывод файла', category: 'Файловая система' },
+    { name: 'write PATH DATA', description: 'запись в файл', category: 'Файловая система' },
+    { name: 'append PATH DATA', description: 'добавление в файл', category: 'Файловая система' },
+    { name: 'mkdir PATH', description: 'создание директории', category: 'Файловая система' },
+    { name: 'rm [-r] PATH', description: 'удаление', category: 'Файловая система' },
+    { name: 'cp SRC DEST', description: 'копирование', category: 'Файловая система' },
+    { name: 'mv SRC DEST', description: 'перемещение', category: 'Файловая система' },
+
+    { name: 'find [PATH] PATTERN', description: 'поиск файлов', category: 'Поиск и анализ' },
+    { name: 'grep PATTERN FILE', description: 'поиск в файле', category: 'Поиск и анализ' },
+    { name: 'head [FILE] [LINES]', description: 'начало файла', category: 'Поиск и анализ' },
+    { name: 'tail [FILE] [LINES]', description: 'конец файла', category: 'Поиск и анализ' },
+    { name: 'wc FILE', description: 'подсчет строк/слов/символов', category: 'Поиск и анализ' },
+    { name: 'hexdump FILE', description: 'hex-дамп файла', category: 'Поиск и анализ' },
+
     { name: 'echo TEXT', description: 'вывод строки', category: 'Утилиты' },
-    { name: 'pwd', description: 'показать текущий каталог', category: 'Файловая система' },
-    { name: 'ls [PATH]', description: 'перечислить каталог (. по умолчанию)', category: 'Файловая система' },
-    { name: 'cd PATH', description: 'перейти в каталог (/ по умолчанию)', category: 'Файловая система' },
-    { name: 'touch PATH', description: 'создать/обнулить файл', category: 'Файловая система' },
-    { name: 'cat PATH', description: 'вывести файл на экран', category: 'Файловая система' },
-    { name: 'write PATH DATA', description: 'перезаписать файл строкой DATA', category: 'Файловая система' },
-    { name: 'append PATH DATA', description: 'дописать строку DATA в конец файла', category: 'Файловая система' },
-    { name: 'mkdir PATH', description: 'создать каталог', category: 'Файловая система' },
-    { name: 'rm [-r] PATH', description: 'удалить файл или каталог (-r рекурсивно)', category: 'Файловая система' },
-    { name: 'savefs', description: 'сохранить RAM-ФС на диск', category: 'Утилиты' },
-    { name: 'loadfs', description: 'перезагрузить снимок ФС с диска', category: 'Утилиты' },
-    { name: 'diskinfo', description: 'информация о подключённом диске', category: 'Утилиты' },
-    { name: 'poweroff', description: 'завершить работу виртуальной машины', category: 'Утилиты' },
-    { name: 'reboot', description: 'перезапустить виртуальную машину', category: 'Утилиты' },
+    { name: 'diskinfo', description: 'информация о диске', category: 'Утилиты' },
+    { name: 'savefs', description: 'сохранение ФС на диск', category: 'Утилиты' },
+    { name: 'loadfs', description: 'загрузка ФС с диска', category: 'Утилиты' },
+    { name: 'ansi', description: 'тест ANSI последовательностей', category: 'Утилиты' },
 ];
 
 // Commands page functionality
@@ -258,7 +270,7 @@ if (document.readyState === 'loading') {
 function typeWriter(element, text, speed = 50) {
     let i = 0;
     element.textContent = '';
-    
+
     function type() {
         if (i < text.length) {
             element.textContent += text.charAt(i);
@@ -266,7 +278,7 @@ function typeWriter(element, text, speed = 50) {
             setTimeout(type, speed);
         }
     }
-    
+
     type();
 }
 
@@ -275,7 +287,7 @@ window.addEventListener('load', () => {
     if (terminalOutput) {
         const originalText = terminalOutput.textContent;
         terminalOutput.style.opacity = '0';
-        
+
         setTimeout(() => {
             terminalOutput.style.opacity = '1';
             terminalOutput.style.transition = 'opacity 0.3s';
@@ -333,7 +345,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 const badgeCmds = document.querySelectorAll('.badge-cmd');
 badgeCmds.forEach(badge => {
-    badge.addEventListener('click', function() {
+    badge.addEventListener('click', function () {
         this.style.animation = 'none';
         setTimeout(() => {
             this.style.animation = '';
@@ -342,7 +354,7 @@ badgeCmds.forEach(badge => {
 });
 
 document.querySelectorAll('.btn').forEach(btn => {
-    btn.addEventListener('click', function(e) {
+    btn.addEventListener('click', function (e) {
         const ripple = document.createElement('span');
         const rect = this.getBoundingClientRect();
         const size = Math.max(rect.width, rect.height);
@@ -365,7 +377,7 @@ function toggleNewsContent(button) {
     const card = button.closest('.news-card');
     const fullContent = card.querySelector('.news-full-content');
     const isExpanded = fullContent.style.display !== 'none';
-    
+
     if (isExpanded) {
         fullContent.style.display = 'none';
         button.innerHTML = 'Читать полностью<span class="arrow-icon">→</span>';
