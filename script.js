@@ -36,39 +36,52 @@ if (navLinks) {
 
 // Commands data
 const commands = [
-    { name: 'help', description: 'список команд', category: 'Система' },
-    { name: 'clear', description: 'очистка экрана', category: 'Система' },
-    { name: 'uptime', description: 'время работы системы', category: 'Система' },
-    { name: 'mem', description: 'информация о памяти', category: 'Система' },
-    { name: 'testmem', description: 'тест аллокатора памяти', category: 'Система' },
-    { name: 'history', description: 'история команд', category: 'Система' },
-    { name: 'poweroff', description: 'выключение системы', category: 'Система' },
-    { name: 'reboot', description: 'перезагрузка системы', category: 'Система' },
+    // === Системные команды ===
+    { name: 'help', description: 'список команд', category: 'Системные команды' },
+    { name: 'clear', description: 'очистка экрана', category: 'Системные команды' },
+    { name: 'uptime', description: 'время работы системы', category: 'Системные команды' },
+    { name: 'mem', description: 'информация о памяти', category: 'Системные команды' },
+    { name: 'testmem', description: 'тест аллокатора памяти', category: 'Системные команды' },
+    { name: 'history', description: 'история команд', category: 'Системные команды' },
+    { name: 'myfetch', description: 'отображение информации о системе с логотипом', category: 'Системные команды' },
+    { name: 'poweroff', description: 'выключение системы', category: 'Системные команды' },
+    { name: 'reboot', description: 'перезагрузка системы', category: 'Системные команды' },
 
-    { name: 'pwd', description: 'текущая директория', category: 'Файловая система' },
-    { name: 'ls [PATH]', description: 'список файлов', category: 'Файловая система' },
-    { name: 'cd PATH', description: 'смена директории', category: 'Файловая система' },
-    { name: 'touch PATH', description: 'создание файла', category: 'Файловая система' },
-    { name: 'cat PATH', description: 'вывод файла', category: 'Файловая система' },
-    { name: 'write PATH DATA', description: 'запись в файл', category: 'Файловая система' },
-    { name: 'append PATH DATA', description: 'добавление в файл', category: 'Файловая система' },
-    { name: 'mkdir PATH', description: 'создание директории', category: 'Файловая система' },
-    { name: 'rm [-r] PATH', description: 'удаление', category: 'Файловая система' },
-    { name: 'cp SRC DEST', description: 'копирование', category: 'Файловая система' },
-    { name: 'mv SRC DEST', description: 'перемещение', category: 'Файловая система' },
+    // === Команды файловой системы ===
+    { name: 'pwd', description: 'текущая директория', category: 'Команды файловой системы' },
+    { name: 'ls [PATH]', description: 'список файлов', category: 'Команды файловой системы' },
+    { name: 'cd PATH', description: 'смена директории', category: 'Команды файловой системы' },
+    { name: 'touch PATH', description: 'создание файла', category: 'Команды файловой системы' },
+    { name: 'cat PATH', description: 'вывод файла', category: 'Команды файловой системы' },
+    { name: 'write PATH DATA', description: 'запись в файл', category: 'Команды файловой системы' },
+    { name: 'append PATH DATA', description: 'добавление в файл', category: 'Команды файловой системы' },
+    { name: 'mkdir PATH', description: 'создание директории', category: 'Команды файловой системы' },
+    { name: 'rm [-r] PATH', description: 'удаление', category: 'Команды файловой системы' },
+    { name: 'cp SRC DEST', description: 'копирование', category: 'Команды файловой системы' },
+    { name: 'mv SRC DEST', description: 'перемещение', category: 'Команды файловой системы' },
 
-    { name: 'find [PATH] PATTERN', description: 'поиск файлов', category: 'Поиск и анализ' },
-    { name: 'grep PATTERN FILE', description: 'поиск в файле', category: 'Поиск и анализ' },
-    { name: 'head [FILE] [LINES]', description: 'начало файла', category: 'Поиск и анализ' },
-    { name: 'tail [FILE] [LINES]', description: 'конец файла', category: 'Поиск и анализ' },
-    { name: 'wc FILE', description: 'подсчет строк/слов/символов', category: 'Поиск и анализ' },
-    { name: 'hexdump FILE', description: 'hex-дамп файла', category: 'Поиск и анализ' },
+    // === Команды поиска и анализа ===
+    { name: 'find [PATH] PATTERN', description: 'поиск файлов', category: 'Команды поиска и анализа' },
+    { name: 'grep PATTERN FILE', description: 'поиск в файле', category: 'Команды поиска и анализа' },
+    { name: 'head [FILE] [LINES]', description: 'начало файла', category: 'Команды поиска и анализа' },
+    { name: 'tail [FILE] [LINES]', description: 'конец файла', category: 'Команды поиска и анализа' },
+    { name: 'wc FILE', description: 'подсчет строк/слов/символов', category: 'Команды поиска и анализа' },
+    { name: 'hexdump FILE', description: 'hex-дамп файла', category: 'Команды поиска и анализа' },
 
-    { name: 'echo TEXT', description: 'вывод строки', category: 'Утилиты' },
-    { name: 'diskinfo', description: 'информация о диске', category: 'Утилиты' },
-    { name: 'savefs', description: 'сохранение ФС на диск', category: 'Утилиты' },
-    { name: 'loadfs', description: 'загрузка ФС с диска', category: 'Утилиты' },
-    { name: 'ansi', description: 'тест ANSI последовательностей', category: 'Утилиты' },
+    // === Команды диска ===
+    { name: 'diskinfo', description: 'информация о диске', category: 'Команды диска' },
+    { name: 'savefs', description: 'сохранение ФС на диск', category: 'Команды диска' },
+    { name: 'loadfs', description: 'загрузка ФС с диска', category: 'Команды диска' },
+
+    // === Команды управления процессами ===
+    { name: 'threads', description: 'список всех потоков', category: 'Команды управления процессами' },
+    { name: 'ps', description: 'детальная информация о процессах (PID, PPID, состояние)', category: 'Команды управления процессами' },
+    { name: 'kill PID', description: 'завершение процесса по PID', category: 'Команды управления процессами' },
+    { name: 'spawn TEXT', description: 'запуск фонового процесса', category: 'Команды управления процессами' },
+
+    // === Тестовые и вспомогательные команды ===
+    { name: 'echo TEXT', description: 'вывод строки', category: 'Тестовые команды' },
+    { name: 'ansi', description: 'тест ANSI последовательностей', category: 'Тестовые команды' }
 ];
 
 // Commands page functionality

@@ -1,360 +1,477 @@
 <!DOCTYPE html>
 <html lang="ru">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="MyOs - Минимальная 64-битная операционная система с интерфейсом командной строки, RAM-файловой системой и базовыми системными утилитами. Изучайте разработку ОС с загрузчиком GRUB, 64-битным режимом процессора и VGA терминалом.">
-    <meta name="keywords"
-        content="MyOs, операционная система, ОС, минимальная, 64-бит, GRUB, ядро, оболочка, файловая система">
-    <meta name="author" content="MyOs Project">
-    <meta property="og:title" content="MyOs - Минимальная 64-битная операционная система">
-    <meta property="og:description"
-        content="Легковесная ОС с мультизагрузкой GRUB, 64-битным режимом процессора, VGA терминалом, интерфейсом командной строки, RAM файловой системой и базовыми системными утилитами">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://myos-project.github.io">
-    <meta name="twitter:card" content="summary_large_image">
-    <title>MyOs - Минимальная 64-битная операционная система | Изучение разработки ОС</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="manifest" href="manifest.json">
-    <link rel="icon" href="favicon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="favicon.svg">
-    <meta name="theme-color" content="#0f172a">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="MyOs - Минимальная 64-битная операционная система с интерфейсом командной строки, RAM-файловой системой и поддержкой процессов. Изучайте разработку ОС с загрузчиком GRUB, 64-битным режимом процессора и VGA терминалом."
+    />
+    <meta
+      name="keywords"
+      content="MyOs, операционная система, ОС, минимальная, 64-бит, GRUB, ядро, оболочка, файловая система, процессы, многозадачность"
+    />
+    <meta name="author" content="MyOs Project" />
+    <meta
+      property="og:title"
+      content="MyOs - Минимальная 64-битная операционная система"
+    />
+    <meta
+      property="og:description"
+      content="Легковесная ОС с мультизагрузкой GRUB, 64-битным режимом процессора, VGA терминалом, оболочкой, файловой системой и управлением процессами"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://myos-project.github.io" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <title>
+      MyOs - Минимальная 64-битная операционная система | Изучение разработки ОС
+    </title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="manifest" href="manifest.json" />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="favicon.svg" />
+    <meta name="theme-color" content="#0f172a" />
     <link
-        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
-</head>
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
 
-<body>
+  <body>
     <nav class="navbar">
-        <div class="navbar-container">
-            <div class="navbar-brand">
-                <span class="terminal-icon">⌘</span>
-                <span class="brand-text">MyOs</span>
-            </div>
-            <button class="menu-toggle" id="menuToggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#home">Главная</a></li>
-                <li><a href="#features">Возможности</a></li>
-                <li><a href="commands.html">Команды</a></li>
-                <li><a href="news.html">Новости</a></li>
-                <li><a href="#download">Скачать</a></li>
-                <li><a href="wiki.html">Wiki</a></li>
-            </ul>
+      <div class="navbar-container">
+        <div class="navbar-brand">
+          <span class="terminal-icon">⌘</span>
+          <span class="brand-text">MyOs</span>
         </div>
+        <button class="menu-toggle" id="menuToggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#home">Главная</a></li>
+          <li><a href="#features">Возможности</a></li>
+          <li><a href="commands.html">Команды</a></li>
+          <li><a href="news.html">Новости</a></li>
+          <li><a href="#download">Скачать</a></li>
+          <li><a href="wiki.html">Wiki</a></li>
+        </ul>
+      </div>
     </nav>
 
     <!-- Hero Section -->
     <section id="home" class="hero">
-        <div class="hero-bg"></div>
-        <div class="hero-content">
-            <div class="badge">64-битная операционная система</div>
-            <h1 class="hero-title gradient-text">MyOs</h1>
-            <p class="hero-subtitle">Минимальная 64-битная операционная система</p>
-            <p class="hero-description">
-                Легковесная ОС с мультизагрузкой GRUB, 64-битным режимом процессора, VGA терминалом,
-                интерфейсом командной строки, RAM файловой системой и базовыми системными утилитами
-            </p>
+      <div class="hero-bg"></div>
+      <div class="hero-content">
+        <div class="badge">64-битная операционная система</div>
+        <h1 class="hero-title gradient-text">MyOs</h1>
+        <p class="hero-subtitle">Минимальная 64-битная операционная система</p>
+        <p class="hero-description">
+          Легковесная ОС с мультизагрузкой GRUB, 64-битным режимом процессора,
+          VGA терминалом, интерфейсом командной строки, RAM файловой системой и
+          управлением процессами
+        </p>
 
-            <div class="terminal-demo">
-                <div class="terminal-header">
-                    <div class="terminal-dot red"></div>
-                    <div class="terminal-dot yellow"></div>
-                    <div class="terminal-dot green"></div>
-                    <span>терминал</span>
-                </div>
-                <div class="terminal-body">
-                    <div><span class="prompt">myos</span><span class="arrow">~></span><span>help</span></div>
-                    <div class="output">Доступные команды: help, clear, uptime, mem, echo, ls, cd, cat...</div>
-                    <div><span class="prompt">myos</span><span class="arrow">~></span><span class="cursor">█</span>
-                    </div>
-                </div>
+        <div class="terminal-demo">
+          <div class="terminal-header">
+            <div class="terminal-dot red"></div>
+            <div class="terminal-dot yellow"></div>
+            <div class="terminal-dot green"></div>
+            <span>терминал</span>
+          </div>
+          <div class="terminal-body">
+            <div>
+              <span class="prompt">myos</span><span class="arrow">~></span
+              ><span>myfetch</span>
             </div>
-
-            <div class="hero-buttons">
-                <a href="https://drive.google.com/drive/folders/1ohPWVVUCRF67QDXHc0DPyWFVI-qS9yYR?usp=sharing"
-                    target="_blank" class="btn btn-primary">
-                    <span class="icon">↓</span>
-                    Скачать ISO
-                </a>
-                <a href="#features" class="btn btn-outline">Изучить возможности</a>
+            <div class="output">MyOs 1.0.0</div>
+            <div class="output">Ядро: C + ассемблер</div>
+            <div class="output">Архитектура: x86_64</div>
+            <div>
+              <span class="prompt">myos</span><span class="arrow">~></span
+              ><span class="cursor">█</span>
             </div>
-
-            <div class="scroll-indicator">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <polyline points="6 9 12 15 18 9"></polyline>
-                </svg>
-            </div>
+          </div>
         </div>
+
+        <div class="hero-buttons">
+          <a
+            href="https://drive.google.com/drive/folders/1ohPWVVUCRF67QDXHc0DPyWFVI-qS9yYR?usp=sharing"
+            target="_blank"
+            class="btn btn-primary"
+          >
+            <span class="icon">↓</span>
+            Скачать ISO
+          </a>
+          <a href="#features" class="btn btn-outline">Изучить возможности</a>
+        </div>
+
+        <div class="scroll-indicator">
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </div>
+      </div>
     </section>
 
     <!-- Features Section -->
     <section id="features" class="features">
-        <div class="section-header">
-            <h2 class="gradient-text">Возможности</h2>
-            <p>Все необходимое в минимальной операционной системе</p>
+      <div class="section-header">
+        <h2 class="gradient-text">Возможности</h2>
+        <p>Все необходимое в минимальной операционной системе</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">⌨️</div>
+          <h3>Интерфейс командной строки</h3>
+          <p>
+            Интерактивная оболочка с автодополнением, историей, ANSI-цветами и
+            поддержкой 30+ команд
+          </p>
         </div>
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon">⌨️</div>
-                <h3>Интерфейс командной строки</h3>
-                <p>Интерактивная командная оболочка с автодополнением Tab, историей Up/Down, поиском Ctrl+R и цветным
-                    выводом ANSI</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">📁</div>
-                <h3>RAM файловая система</h3>
-                <p>Файловая система в памяти с поддержкой директорий, древовидной структурой и возможностью сохранения
-                    на ATA диск</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">⚙️</div>
-                <h3>Встроенные команды</h3>
-                <p>30 команд: файловые операции, поиск и анализ, системная информация и утилиты для работы с диском</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">💾</div>
-                <h3>Управление памятью</h3>
-                <p>Простой аллокатор кучи с отслеживанием памяти, статистикой фрагментации и верификацией</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">⏱️</div>
-                <h3>PIT таймер</h3>
-                <p>Программируемый интервальный таймер на 100 Гц для отслеживания времени работы системы</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">🔧</div>
-                <h3>Загрузчик GRUB</h3>
-                <p>Multiboot-совместимый загрузчик с инициализацией long mode</p>
-            </div>
+        <div class="feature-card">
+          <div class="feature-icon">📁</div>
+          <h3>RAM файловая система</h3>
+          <p>
+            Полноценная ФС в памяти с древовидной структурой и сериализацией на
+            диск
+          </p>
         </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔄</div>
+          <h3>Управление процессами</h3>
+          <p>
+            Поддержка иерархии процессов, состояний (running, zombie, sleeping),
+            PID/PPID и команд kill/spawn/ps
+          </p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">💾</div>
+          <h3>Управление памятью</h3>
+          <p>
+            Аллокатор кучи с coalescing, выравниванием и отладочной статистикой
+          </p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">⏱️</div>
+          <h3>PIT таймер</h3>
+          <p>Таймер на 100 Гц для аптайма и планировщика задач</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔧</div>
+          <h3>Загрузчик GRUB</h3>
+          <p>Multiboot-совместимый загрузчик с переходом в long mode</p>
+        </div>
+      </div>
     </section>
 
     <!-- Commands Preview -->
     <section id="commands-preview" class="commands-preview">
-        <div class="section-header">
-            <h2 class="gradient-text">Команды командной оболочки</h2>
-            <p>Мощный интерфейс командной строки для управления системой</p>
+      <div class="section-header">
+        <h2 class="gradient-text">Команды командной оболочки</h2>
+        <p>Мощный интерфейс командной строки для управления системой</p>
+      </div>
+      <div class="commands-categories">
+        <div class="cmd-category">
+          <h3>Система</h3>
+          <div class="cmd-badges">
+            <span class="badge-cmd">help</span>
+            <span class="badge-cmd">clear</span>
+            <span class="badge-cmd">uptime</span>
+            <span class="badge-cmd">mem</span>
+            <span class="badge-cmd">myfetch</span>
+            <span class="badge-cmd">history</span>
+            <span class="badge-cmd">poweroff</span>
+            <span class="badge-cmd">reboot</span>
+          </div>
         </div>
-        <div class="commands-categories">
-            <div class="cmd-category">
-                <h3>Система</h3>
-                <div class="cmd-badges">
-                    <span class="badge-cmd">help</span>
-                    <span class="badge-cmd">clear</span>
-                    <span class="badge-cmd">uptime</span>
-                    <span class="badge-cmd">mem</span>
-                    <span class="badge-cmd">testmem</span>
-                    <span class="badge-cmd">history</span>
-                    <span class="badge-cmd">poweroff</span>
-                    <span class="badge-cmd">reboot</span>
-                </div>
-            </div>
-            <div class="cmd-category">
-                <h3>Файловая система</h3>
-                <div class="cmd-badges">
-                    <span class="badge-cmd">pwd</span>
-                    <span class="badge-cmd">ls</span>
-                    <span class="badge-cmd">cd</span>
-                    <span class="badge-cmd">touch</span>
-                    <span class="badge-cmd">cat</span>
-                    <span class="badge-cmd">mkdir</span>
-                    <span class="badge-cmd">rm</span>
-                    <span class="badge-cmd">cp</span>
-                    <span class="badge-cmd">mv</span>
-                </div>
-            </div>
-            <div class="cmd-category">
-                <h3>Поиск и анализ</h3>
-                <div class="cmd-badges">
-                    <span class="badge-cmd">find</span>
-                    <span class="badge-cmd">grep</span>
-                    <span class="badge-cmd">head</span>
-                    <span class="badge-cmd">tail</span>
-                    <span class="badge-cmd">wc</span>
-                    <span class="badge-cmd">hexdump</span>
-                </div>
-            </div>
-            <div class="cmd-category">
-                <h3>Утилиты</h3>
-                <div class="cmd-badges">
-                    <span class="badge-cmd">echo</span>
-                    <span class="badge-cmd">diskinfo</span>
-                    <span class="badge-cmd">savefs</span>
-                    <span class="badge-cmd">loadfs</span>
-                    <span class="badge-cmd">ansi</span>
-                </div>
-            </div>
+        <div class="cmd-category">
+          <h3>Файловая система</h3>
+          <div class="cmd-badges">
+            <span class="badge-cmd">pwd</span>
+            <span class="badge-cmd">ls</span>
+            <span class="badge-cmd">cd</span>
+            <span class="badge-cmd">touch</span>
+            <span class="badge-cmd">cat</span>
+            <span class="badge-cmd">mkdir</span>
+            <span class="badge-cmd">rm</span>
+            <span class="badge-cmd">cp</span>
+            <span class="badge-cmd">mv</span>
+          </div>
         </div>
-        <div style="text-align: center; margin-top: 2rem;">
-            <a href="commands.html" class="btn btn-outline">Посмотреть все команды →</a>
+        <div class="cmd-category">
+          <h3>Поиск и анализ</h3>
+          <div class="cmd-badges">
+            <span class="badge-cmd">find</span>
+            <span class="badge-cmd">grep</span>
+            <span class="badge-cmd">head</span>
+            <span class="badge-cmd">tail</span>
+            <span class="badge-cmd">wc</span>
+            <span class="badge-cmd">hexdump</span>
+          </div>
         </div>
+        <div class="cmd-category">
+          <h3>Процессы</h3>
+          <div class="cmd-badges">
+            <span class="badge-cmd">ps</span>
+            <span class="badge-cmd">kill</span>
+            <span class="badge-cmd">spawn</span>
+            <span class="badge-cmd">threads</span>
+          </div>
+        </div>
+        <div class="cmd-category">
+          <h3>Утилиты</h3>
+          <div class="cmd-badges">
+            <span class="badge-cmd">echo</span>
+            <span class="badge-cmd">diskinfo</span>
+            <span class="badge-cmd">savefs</span>
+            <span class="badge-cmd">loadfs</span>
+            <span class="badge-cmd">ansi</span>
+          </div>
+        </div>
+      </div>
+      <div style="text-align: center; margin-top: 2rem">
+        <a href="commands.html" class="btn btn-outline"
+          >Посмотреть все команды →</a
+        >
+      </div>
     </section>
 
     <!-- Screenshots Section -->
     <section id="screenshots" class="screenshots">
-        <div class="section-header">
-            <h2 class="gradient-text">Посмотрите в действии</h2>
-            <p>Скриншоты терминала, показывающие возможности MyOs</p>
+      <div class="section-header">
+        <h2 class="gradient-text">Посмотрите в действии</h2>
+        <p>Скриншоты терминала, показывающие возможности MyOs</p>
+      </div>
+      <div class="screenshots-grid">
+        <div class="screenshot-card">
+          <img src="images/image_1763983951706.png" alt="Экран загрузки MyOs" />
+          <p>Инициализация системы и запуск оболочки</p>
         </div>
-        <div class="screenshots-grid">
-            <div class="screenshot-card">
-                <img src="images/image_1763983951706.png" alt="Экран загрузки MyOs">
-                <p>Инициализация системы и запуск оболочки</p>
-            </div>
-            <div class="screenshot-card">
-                <img src="images/image_1763983958042.png" alt="Команды файловой системы">
-                <p>Список директорий и навигация</p>
-            </div>
-            <div class="screenshot-card">
-                <img src="images/image_1763983961851.png" alt="Тестирование памяти">
-                <p>Выделение памяти и статистика</p>
-            </div>
-            <div class="screenshot-card">
-                <img src="images/image_1763983966341.png" alt="Информация о диске">
-                <p>Отображение информации об ATA диске</p>
-            </div>
+        <div class="screenshot-card">
+          <img
+            src="images/image_1763983958042.png"
+            alt="Команды файловой системы"
+          />
+          <p>Список директорий и навигация</p>
         </div>
+        <div class="screenshot-card">
+          <img src="images/image_1763983961851.png" alt="Тестирование памяти" />
+          <p>Выделение памяти и статистика</p>
+        </div>
+        <div class="screenshot-card">
+          <img src="images/image_1763983966341.png" alt="Информация о диске" />
+          <p>Отображение информации об ATA диске</p>
+        </div>
+        <div class="screenshot-card">
+          <img src="images/myfetch.jpg" alt="Команда myfetch в MyOs" />
+          <p>
+            Системная информация с логотипом через команду <code>myfetch</code>
+          </p>
+        </div>
+      </div>
     </section>
 
     <!-- Download Section -->
     <section id="download" class="download">
-        <div class="section-header">
-            <h2 class="gradient-text">Начало работы</h2>
-            <p>Запустите MyOs за несколько минут с помощью этих простых шагов</p>
+      <div class="section-header">
+        <h2 class="gradient-text">Начало работы</h2>
+        <p>Запустите MyOs за несколько минут с помощью этих простых шагов</p>
+      </div>
+
+      <div class="download-grid">
+        <div class="download-column">
+          <h3>Требования</h3>
+          <div class="card">
+            <ul class="requirements-list">
+              <li>
+                <span class="bullet"></span>qemu-system-x86_64 - Эмулятор для
+                тестирования
+              </li>
+              <li>
+                <span class="bullet"></span>wget или curl - Загрузчик файлов
+              </li>
+              <li><span class="bullet"></span>tar или unzip - Архиватор</li>
+              <li>
+                <span class="bullet"></span>Linux/macOS или WSL на Windows -
+                Хост для запуска
+              </li>
+            </ul>
+          </div>
         </div>
 
-        <div class="download-grid">
-            <div class="download-column">
-                <h3>Требования</h3>
-                <div class="card">
-                    <ul class="requirements-list">
-                        <li><span class="bullet"></span>qemu-system-x86_64 - Эмулятор для тестирования</li>
-                        <li><span class="bullet"></span>wget или curl - Загрузчик файлов</li>
-                        <li><span class="bullet"></span>tar или unzip - Архиватор</li>
-                        <li><span class="bullet"></span>Linux/macOS или WSL на Windows - Хост для запуска</li>
-                    </ul>
-                </div>
+        <div class="download-column">
+          <h3>Установка и запуск</h3>
+          <div class="card">
+            <div class="code-block">
+              <div class="code-title">
+                <span class="code-icon">⌘</span>
+                1. Скачать готовый ISO
+              </div>
+              <code
+                >wget
+                https://drive.google.com/uc?export=download&amp;id=1ohPWVVUCRF67QDXHc0DPyWFVI-qS9yYR</code
+              >
+              <p class="code-desc">
+                Загружает готовый образ операционной системы
+              </p>
             </div>
-
-            <div class="download-column">
-                <h3>Установка и запуск</h3>
-                <div class="card">
-                    <div class="code-block">
-                        <div class="code-title">
-                            <span class="code-icon">⌘</span>
-                            1. Скачать готовый ISO
-                        </div>
-                        <code>wget https://drive.google.com/...MyOs.iso</code>
-                        <p class="code-desc">Загружает готовый образ операционной системы</p>
-                    </div>
-                    <div class="code-block">
-                        <div class="code-title">
-                            <span class="code-icon">⌘</span>
-                            2. Запустить в QEMU
-                        </div>
-                        <code>qemu-system-x86_64 -cdrom MyOs.iso -m 512</code>
-                        <p class="code-desc">Запускает ОС в эмуляторе с 512MB памяти</p>
-                    </div>
-                    <div class="code-block">
-                        <div class="code-title">
-                            <span class="code-icon">⌘</span>
-                            3. Готово к экспериментам!
-                        </div>
-                        <code>myos ~> help</code>
-                        <p class="code-desc">Введите команду для просмотра доступных функций</p>
-                    </div>
-                </div>
+            <div class="code-block">
+              <div class="code-title">
+                <span class="code-icon">⌘</span>
+                2. Запустить в QEMU
+              </div>
+              <code>qemu-system-x86_64 -cdrom MyOs.iso -m 512</code>
+              <p class="code-desc">Запускает ОС в эмуляторе с 512MB памяти</p>
             </div>
+            <div class="code-block">
+              <div class="code-title">
+                <span class="code-icon">⌘</span>
+                3. Готово к экспериментам!
+              </div>
+              <code>myos ~> help</code>
+              <p class="code-desc">
+                Введите команду для просмотра доступных функций
+              </p>
+            </div>
+          </div>
         </div>
+      </div>
 
-        <div class="download-cta">
-            <a href="https://drive.google.com/drive/folders/1ohPWVVUCRF67QDXHc0DPyWFVI-qS9yYR?usp=sharing"
-                target="_blank" class="btn btn-primary btn-large">
-                <span class="icon">↓</span>
-                Скачать ISO
-            </a>
-            <p class="license-text">Проект с открытым исходным кодом - лицензия MIT</p>
-        </div>
+      <div class="download-cta">
+        <a
+          href="https://drive.google.com/drive/folders/1ohPWVVUCRF67QDXHc0DPyWFVI-qS9yYR?usp=sharing"
+          target="_blank"
+          class="btn btn-primary btn-large"
+        >
+          <span class="icon">↓</span>
+          Скачать ISO
+        </a>
+        <p class="license-text">
+          Проект с открытым исходным кодом - лицензия MIT
+        </p>
+      </div>
     </section>
 
     <!-- Wiki Section -->
     <section id="wiki" class="wiki">
-        <div class="section-header">
-            <h2 class="gradient-text">Документация и Wiki</h2>
-            <p>Узнайте больше о внутреннем устройстве MyOs, процессе разработки и правилах участия</p>
+      <div class="section-header">
+        <h2 class="gradient-text">Документация и Wiki</h2>
+        <p>
+          Узнайте больше о внутреннем устройстве MyOs, процессе разработки и
+          правилах участия
+        </p>
+      </div>
+      <div class="wiki-grid">
+        <div class="wiki-card">
+          <div class="wiki-icon">🔧</div>
+          <h3>Документация разработчика</h3>
+          <p>Архитектура ядра, загрузчик, управления памятью и процессами</p>
         </div>
-        <div class="wiki-grid">
-            <div class="wiki-card">
-                <div class="wiki-icon">🔧</div>
-                <h3>Документация разработчика</h3>
-                <p>Обзор архитектуры, система сборки и внутреннее устройство ядра</p>
-            </div>
-            <div class="wiki-card">
-                <div class="wiki-icon">⌨️</div>
-                <h3>Руководство пользователя</h3>
-                <p>Команды оболочки, операции с файловой системой и системные утилиты</p>
-            </div>
+        <div class="wiki-card">
+          <div class="wiki-icon">⌨️</div>
+          <h3>Руководство пользователя</h3>
+          <p>
+            Команды оболочки, работа с файлами, процессы и системные утилиты
+          </p>
         </div>
+      </div>
+      <div style="text-align: center; margin-top: 2rem">
+        <a href="wiki.html" class="btn btn-outline">Перейти в Wiki →</a>
+      </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-column">
-                <div class="footer-brand">
-                    <span class="terminal-icon">⌘</span>
-                    <span>MyOs</span>
-                </div>
-                <p>Минимальная 64-битная операционная система, созданная для обучения и экспериментов с современными
-                    концепциями ОС</p>
-                <div class="social-icons">
-                    <a href="https://github.com/KaVoshnik/MyOs" target="_blank" class="social-icon">GitHub</a>
-                    <a href="wiki.html" class="social-icon">Документация</a>
-                </div>
-            </div>
-            <div class="footer-column">
-                <h4>Ресурсы</h4>
-                <ul>
-                    <li><a href="wiki.html">Документация</a></li>
-                    <li><a href="#features">Возможности</a></li>
-                    <li><a href="commands.html">Команды</a></li>
-                    <li><a href="news.html">Новости</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h4>Сообщество</h4>
-                <ul>
-                    <li><a href="https://github.com/KaVoshnik/MyOs" target="_blank">Репозиторий GitHub</a></li>
-                    <li><a href="https://github.com/KaVoshnik/MyOs/issues" target="_blank">Сообщить о проблеме</a></li>
-                    <li><a href="https://drive.google.com/drive/folders/1ohPWVVUCRF67QDXHc0DPyWFVI-qS9yYR?usp=sharing"
-                            target="_blank">Скачать</a></li>
-                </ul>
-            </div>
+      <div class="footer-content">
+        <div class="footer-column">
+          <div class="footer-brand">
+            <span class="terminal-icon">⌘</span>
+            <span>MyOs</span>
+          </div>
+          <p>
+            Минимальная 64-битная операционная система, созданная для обучения и
+            экспериментов с современными концепциями ОС
+          </p>
+          <div class="social-icons">
+            <a
+              href="https://github.com/KaVoshnik/MyOs"
+              target="_blank"
+              class="social-icon"
+              >GitHub</a
+            >
+            <a href="wiki.html" class="social-icon">Документация</a>
+          </div>
         </div>
-        <div class="footer-bottom">
-            <p>© 2025 MyOs Project • Выпущено под лицензией MIT</p>
+        <div class="footer-column">
+          <h4>Ресурсы</h4>
+          <ul>
+            <li><a href="wiki.html">Документация</a></li>
+            <li><a href="#features">Возможности</a></li>
+            <li><a href="commands.html">Команды</a></li>
+            <li><a href="news.html">Новости</a></li>
+          </ul>
         </div>
+        <div class="footer-column">
+          <h4>Сообщество</h4>
+          <ul>
+            <li>
+              <a href="https://github.com/KaVoshnik/MyOs" target="_blank"
+                >Репозиторий GitHub</a
+              >
+            </li>
+            <li>
+              <a href="https://github.com/KaVoshnik/MyOs/issues" target="_blank"
+                >Сообщить о проблеме</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://drive.google.com/drive/folders/1ohPWVVUCRF67QDXHc0DPyWFVI-qS9yYR?usp=sharing"
+                target="_blank"
+                >Скачать</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 MyOs Project • Выпущено под лицензией MIT</p>
+      </div>
     </footer>
 
     <!-- Back to Top Button -->
-    <button id="backToTop" class="back-to-top" title="Наверх" aria-label="Наверх">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
-            <polyline points="18 15 10 7 2 15"></polyline>
-        </svg>
+    <button
+      id="backToTop"
+      class="back-to-top"
+      title="Наверх"
+      aria-label="Наверх"
+    >
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 20 20"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+      >
+        <polyline points="18 15 10 7 2 15"></polyline>
+      </svg>
     </button>
 
     <script src="script.js"></script>
     <script>
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('sw.js').catch(() => { });
-        }
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.register("sw.js").catch(() => {});
+      }
     </script>
-</body>
-
+  </body>
 </html>
